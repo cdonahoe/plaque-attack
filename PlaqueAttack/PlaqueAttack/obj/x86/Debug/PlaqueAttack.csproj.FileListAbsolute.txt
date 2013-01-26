@@ -16,5 +16,7 @@ C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\obj\x86\Debug\R
 C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\obj\x86\Debug\PlaqueAttack.exe
 C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\obj\x86\Debug\PlaqueAttack.pdb
-C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\arteryBackground.xnb
 C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\arteryBackground.xnb
+C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\arteryBackground.xnb
+C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\bananaFadeIn.xnb
+C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\saladFadeIn.xnb

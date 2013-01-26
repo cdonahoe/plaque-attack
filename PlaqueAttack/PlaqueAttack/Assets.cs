@@ -22,7 +22,9 @@ namespace PlaqueAttack
            new AssetModel(FirstLoad),
             //new AssetModel("Background Music", "Music/Global Game Jam 1", typeof(Song)),
            // new AssetModel("Small font", "Fonts/Small", typeof(SpriteFont)),
-           new AssetModel("Artery", "arteryBackground", typeof(Texture2D)),
+           new AssetModel("Artery", "Images/arteryBackground", typeof(Texture2D)),
+           new AssetModel("Banana", "Images/bananaFadeIn", typeof(Texture2D)),
+           new AssetModel("Salad", "Images/saladFadeIn", typeof(Texture2D))
 
             //new AssetModel("Click", "Music/Click", typeof(SoundEffect)),
         };

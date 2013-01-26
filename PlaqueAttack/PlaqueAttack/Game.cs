@@ -113,7 +113,7 @@ namespace PlaqueAttack
         /// 
 
         // TESTING
-        private Texture2D block;
+        private Block block;
         private TransformAnimation rectAnimation;
         protected override void Initialize()
         {
@@ -130,6 +130,8 @@ namespace PlaqueAttack
             // Initialize things
             board = new Board(12, 14);
             animationUpdateArray = new List<TransformAnimation>();
+            //TESTING
+            block = new Block(Block.BlockColor.Orange, new Vector2(100, 100));
 
             base.Initialize();
         }
@@ -184,11 +186,11 @@ namespace PlaqueAttack
                         for (int i = 0; i < 50; i++)
                         {
                             Block b = new Block(Block.BlockColor.Blue, new Vector2(0, 0));
-                            Vector2 endPos = board.PlaceBlock(b);
-                            TransformAnimation tran = new TransformAnimation(b, TimeSpan.FromSeconds(1), b.GetLoc(), TransformGridToScreen(endPos), TransformAnimation.AnimationCurve.Smooth);
+                            Vector2 endPos = TransformGridToScreen(board.PlaceBlock(b));
+                            Vector2 startPos = new Vector2(endPos.X, -40);
+                            TransformAnimation tran = new TransformAnimation(b, TimeSpan.FromSeconds(1), startPos, endPos, TransformAnimation.AnimationCurve.Smooth);
                             animationUpdateArray.Add(tran);
                         }
-
                     }
                     else
                     {
@@ -246,7 +248,7 @@ namespace PlaqueAttack
 
                 case GameState.Playing:
 
-                    block = DrawUtils.CreateFilledRectangle(_graphics.GraphicsDevice, 40, 40, Color.Green, Color.Green);
+                    Texture2D blockTexture = DrawUtils.CreateFilledRectangle(_graphics.GraphicsDevice, 40, 40, Color.Green, Color.Green);
 
 
 
@@ -263,15 +265,15 @@ namespace PlaqueAttack
                         {
                             if (b[c, r] != null)
                             {
-                                _spriteBatch.Draw(block, b[c, r].GetLoc(), Color.White);
+                                _spriteBatch.Draw(blockTexture, b[c, r].GetLoc(), Color.White);
                             }
                         }
                     }
                     
-                    
 
                     // Draw 
-
+                    Texture2D banana = Assets.Get<Texture2D>("Banana");
+                    _spriteBatch.Draw(banana, new Vector2(4, 68), Color.White);
                     _spriteBatch.End();
 
                     break;
