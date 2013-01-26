@@ -6,16 +6,17 @@ using Microsoft.Xna.Framework;
 
 namespace PlaqueAttack
 {
-    class Block
+    public class Block
     {
         private BlockColor color;
         private bool active;
-        private bool alive;
         private Vector2 gridLoc; // Location in the grid (r, c)
         private Vector2 loc; // Location on the screen (x, y)
-        private Rectangle bounds;
+        //public Rectangle bounds;
         static int width = 40;
         static int height = 40;
+        public int x;
+        public int y;
 
         public enum BlockColor
         {
@@ -38,9 +39,10 @@ namespace PlaqueAttack
         {
             this.color = color;
             active = false;
-            alive = true;
             loc = location;
-            bounds = new Rectangle((int)loc.X, (int)loc.Y, width, height);
+            x = (int)gridLoc.X;
+            y = (int)gridLoc.Y;
+            //bounds = new Rectangle((int)loc.X, (int)loc.Y, width, height);
         }
 
         public void SetActive(bool active)
@@ -51,11 +53,6 @@ namespace PlaqueAttack
         public bool IsActive()
         {
             return active;
-        }
-
-        public bool isAlive()
-        {
-            return alive;
         }
 
         public void setGridLoc(int r, int c) {
@@ -72,47 +69,7 @@ namespace PlaqueAttack
         }
 
         //checks for collision 
-        public void playerBlockCollision(Player player)
-        {
-            //checks if player hit kill button
-            if (player.kill == true)
-            {
-                if (player.barNumber == 1)
-                {
-                    //checks if player bar intersects block
-                    if (player.bar1.Intersects(bounds))
-                    {
-                        //checks if bar and block colors match
-                        if (player.color1.Equals(this.color))
-                        {
-                            this.alive = false;
-                        }
-
-                    }
-                }
-
-                if (player.barNumber == 2)
-                {
-                    if (player.bar1.Intersects(bounds))
-                    {
-                        //checks if bar and block colors match
-                        if (player.color1.Equals(this.color))
-                        {
-                            this.alive = false;
-                        }
-                    }
-                    if (player.bar2.Intersects(bounds))
-                    {
-                        if (player.color2.Equals(this.color))
-                        {
-                            this.alive = false;
-                        }
-                    }
-
-                }
-            }
-
-        }
+ 
 
         public Vector2 getGridLoc()
         {
