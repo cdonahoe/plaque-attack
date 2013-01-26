@@ -10,10 +10,14 @@ namespace PlaqueAttack
     class Food
     {
         FoodTypes type; // This should probably be an en enum
-        int numBlocks;
+        public int startBlocks;
+        public int numBlocks;
         int numColors;
         float speed;
         Random rand;
+        public Animation anim;
+        public Rectangle? clip;
+        public FoodTypes foodType;
 
         public enum FoodTypes
         {
@@ -30,14 +34,14 @@ namespace PlaqueAttack
         /// <param name="numBlocks">Number of blocks this food will emit</param>
         /// <param name="numColors">Number of different color blocks possible</param>
         /// <param name="speed">How quickly the blocks will spawn</param>
-        public Food(FoodTypes type, int numBlocks, int numColors, float speed)
-        {
-            rand = new Random();
-            this.type = type;
-            this.numBlocks = numBlocks;
-            this.numColors = numColors;
-            this.speed = speed;
-        }
+        //public Food(FoodTypes type, int numBlocks, int numColors, float speed)
+        //{
+        //    rand = new Random();
+        //    this.type = type;
+        //    this.numBlocks = numBlocks;
+        //    this.numColors = numColors;
+        //    this.speed = speed;
+        //}
 
         /// <summary>
         /// Creates food with hardcoded values based on type
@@ -46,33 +50,40 @@ namespace PlaqueAttack
         public Food(FoodTypes type)
         {
             rand = new Random();
+            anim = new Animation(5, 1, 200, 200, 5, 1, 0, 0, 1);
+            foodType = type;
             if (type == FoodTypes.Banana)
             {
-                numBlocks = 100;
+                startBlocks = 30;
+                numBlocks = 30;
                 numColors = 2;
                 speed = 40;
             }
             if (type == FoodTypes.Salad)
             {
-                numBlocks = 120;
+                startBlocks = 50;
+                numBlocks = 50;
                 numColors = 3;
                 speed = 30;
             }
             if (type == FoodTypes.Hamburger)
             {
-                numBlocks = 150;
+                startBlocks = 30;
+                numBlocks = 30;
                 numColors = 4;
                 speed = 20;
             }
             if (type == FoodTypes.Pizza)
             {
-                numBlocks = 170;
+                startBlocks = 30;
+                numBlocks = 30;
                 numColors = 6;
                 speed = 20;
             }
             if (type == FoodTypes.IceCream)
             {
-                numBlocks = 200;
+                startBlocks = 30;
+                numBlocks = 30;
                 numColors = 8;
                 speed = 15;
             }

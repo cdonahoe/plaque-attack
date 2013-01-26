@@ -62,9 +62,18 @@ namespace PlaqueAttack
         private enum GameState
         {
             Loading,
-            TitleScreen,
             Playing,
         }
+
+        private enum PlayingState
+        {
+            Title,
+            Transition,
+            Level,
+            GameOver,
+            Victory,
+        }
+
 
         #endregion
 
@@ -97,10 +106,12 @@ namespace PlaqueAttack
         /// machine.
         /// </summary>
         private GameState _state;
-        public Board board;
-        public Player player1;
+        private PlayingState playingState;
+        private Board board;
+        private Player player1;
         private List<TransformAnimation> animationUpdateArray;
         private Food currentFood;
+        private Queue<Food> foodLevels;
         private int spawnTimer = 0;
 
         #endregion
@@ -113,12 +124,8 @@ namespace PlaqueAttack
         /// related content.  Calling base.Initialize will enumerate through any components
         /// and initialize them as well.
         /// </summary>
-        /// 
-
-        // TESTING
-        private Block block;
+        ///
         private Texture2D playerTexture;
-        private TransformAnimation rectAnimation;
         protected override void Initialize()
         {
             _graphics.PreferredBackBufferWidth = WINDOW_WIDTH;
@@ -128,18 +135,21 @@ namespace PlaqueAttack
             IsMouseVisible = true;
 
             _state = GameState.Loading;
+            playingState = PlayingState.Title;
 
             Window.Title = "Plaque Attack";
 
             // Initialize things
             board = new Board(12, 14);
             animationUpdateArray = new List<TransformAnimation>();
-            //TESTING
-            block = new Block(Block.BlockColor.Orange, new Vector2(100, 100));
+
             playerTexture = DrawUtils.CreateFilledRectangle(_graphics.GraphicsDevice, 40, 40, Color.Yellow, Color.Yellow);
             player1 = new Player(playerTexture, 1, Color.Yellow);
 
-            currentFood = new Food(Food.FoodTypes.Banana);
+            //currentFood = new Food(Food.FoodTypes.Banana);
+            foodLevels = new Queue<Food>();
+            foodLevels.Enqueue(new Food(Food.FoodTypes.Banana));
+            foodLevels.Enqueue(new Food(Food.FoodTypes.Salad));
 
             base.Initialize();
         }
@@ -173,7 +183,7 @@ namespace PlaqueAttack
         /// <param name="gameTime">Provides a snapshot of timing values.</param>      
         protected override void Update(GameTime gameTime)
         {
-            var mouseState = Mouse.GetState();
+            var keyboardState = Keyboard.GetState();
 
             switch (_state)
             {
@@ -189,20 +199,6 @@ namespace PlaqueAttack
                             MediaPlayer.Volume = 1f;
                             //MediaPlayer.Play(Assets.Get<Song>("Background Music"));
                         }
-
-                        
-
-                        // TESTING Add a bunch of blocks to the board
-                        Food banana = new Food(Food.FoodTypes.Banana);
-                        for (int i = 0; i < 50; i++)
-                        {
-                            //Block b = new Block(Block.BlockColor.Orange, new Vector2(0, 0));
-                            //Vector2 endPos = TransformGridToScreen(board.PlaceBlock(b));
-                            //Vector2 startPos = new Vector2(endPos.X, -40);
-                            //TransformAnimation tran = new TransformAnimation(b, TimeSpan.FromSeconds(0.5), startPos, endPos, TransformAnimation.AnimationCurve.Smooth);
-                            //animationUpdateArray.Add(tran);
-                            //banana.spawnToBoard(board, animationUpdateArray);
-                        }
                     }
                     else
                     {
@@ -211,18 +207,65 @@ namespace PlaqueAttack
 
                     break;
 
-                case GameState.TitleScreen:
-
-                    var state = Mouse.GetState();
-
-                    if (state.LeftButton == ButtonState.Pressed)
+                case GameState.Playing:
+                    // Switch for playing states
+                    switch (playingState)
                     {
-                        _state = GameState.Playing;
+                        case PlayingState.Title:
+                            // Start when any key is pressed
+                            if (keyboardState.GetPressedKeys().Length > 0)
+                            {
+                                playingState = PlayingState.Transition;
+                            }
+                            break;
+                        case PlayingState.Transition:
+                            if (currentFood == null) currentFood = foodLevels.Dequeue();
+                            currentFood.anim.Update(gameTime);
+                            currentFood.clip = currentFood.anim.CurrentFrame;
+                            if (currentFood.anim.IsFinished())
+                                playingState = PlayingState.Level;
+                            break;
+                        case PlayingState.Level:
+                            Rectangle temp = currentFood.anim.CurrentFrame;
+                            float percent = (float) currentFood.numBlocks / (float) currentFood.startBlocks;
+                            temp.Width = (int) (currentFood.anim.CurrentFrame.Width * percent);
+                            Console.WriteLine(currentFood.numBlocks / currentFood.startBlocks);
+                            currentFood.clip = temp;
+
+                            spawnTimer++;
+                            if (currentFood != null)
+                            {
+                                if (spawnTimer >= currentFood.GetSpeed())
+                                {
+                                    if (currentFood.numBlocks > 0)
+                                    {
+                                        currentFood.spawnToBoard(board, animationUpdateArray);
+                                        spawnTimer = 0;
+                                    }
+                                    else
+                                    {
+                                        //if (board.GetNumBlocks() == 0)
+                                        {
+                                            currentFood = null;
+                                            if (foodLevels.Count == 0)
+                                            {
+                                                // No more foods... YOU WIN!
+                                                playingState = PlayingState.Victory;
+                                                break;
+                                            }
+                                            playingState = PlayingState.Transition;
+                                        }
+                                    }
+                                }
+                            }
+                            break;
+                        case PlayingState.GameOver:
+                            Console.WriteLine("GameOver state");
+                            break;
+                        case PlayingState.Victory:
+                            break;
                     }
 
-                    break;
-
-                case GameState.Playing:
                     // Update any transform animations; delete them if they're done
                     for (int i = 0; i < animationUpdateArray.Count; i++)
                     {
@@ -233,25 +276,17 @@ namespace PlaqueAttack
                             if (animationUpdateArray[i].GetObject() is Block)
                             {
                                 ((Block)animationUpdateArray[i].GetObject()).SetActive(true);
-                                if (board.gameLost) board.ClearBoard();
-                                currentFood = null;
+                                if (board.gameLost)
+                                {
+                                    board.ClearBoard();
+                                    currentFood = null;
+                                    playingState = PlayingState.GameOver;
+                                }  
                             }
                             animationUpdateArray.Remove(animationUpdateArray[i]);
                             
                         }
                     }
-
-                    // Update food if set
-                    spawnTimer++;
-                    if (currentFood != null)
-                    { 
-                        if (spawnTimer >= currentFood.GetSpeed())
-                        {
-                            currentFood.spawnToBoard(board, animationUpdateArray);
-                            spawnTimer = 0;
-                        }
-                    }
-
                     player1.Update();
                     Block[,] blockArray = board.GetBoard();
                     playerBlockCollision(player1, board.GetBoard());
@@ -288,13 +323,9 @@ namespace PlaqueAttack
                     DrawLoadingScreen();
                     break;
 
-                case GameState.TitleScreen:
-                    DrawTitleScreen();
-                    break;
-
                 case GameState.Playing:
 
-                    Texture2D blockTexture = DrawUtils.CreateFilledRectangle(_graphics.GraphicsDevice, 40, 40, Color.Black, Color.White);
+                    /// DrawUtils.CreateFilledRectangle(_graphics.GraphicsDevice, 40, 40, Color.Black, Color.White);
 
 
 
@@ -304,6 +335,7 @@ namespace PlaqueAttack
                     _spriteBatch.Draw(artery, new Vector2(236, 0), Color.White);
 
                     // Draw blocks from the board
+                    Texture2D blockTexture = Assets.Get<Texture2D>("Block");
                     Block[,] b = board.GetBoard();
                     for (int c = 0; c < b.GetLength(0); c++)
                     {
@@ -367,9 +399,18 @@ namespace PlaqueAttack
                     _spriteBatch.Draw(barTexture, player1.position, Color.White);
 
                     // Draw 
-                    Animation a = new Animation(5, 0.2, 50, 50, 5, 1, 0, 0, 1); 
-                    Texture2D banana = Assets.Get<Texture2D>("Banana");
-                    _spriteBatch.Draw(banana, new Vector2(4, 68), Color.White);
+
+                    // Draw food if set
+                    if (currentFood != null)
+                    {
+                        Texture2D banana = Assets.Get<Texture2D>("Banana");
+                        Texture2D salad = Assets.Get<Texture2D>("Salad");
+                        if (currentFood.foodType == Food.FoodTypes.Banana)
+                            _spriteBatch.Draw(banana, new Vector2(4, 68), currentFood.clip, Color.White);
+                        else if (currentFood.foodType == Food.FoodTypes.Salad)
+                            _spriteBatch.Draw(salad, new Vector2(4, 68), currentFood.clip, Color.White);
+                        
+                    }
                     _spriteBatch.End();
 
                     break;
