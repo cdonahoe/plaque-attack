@@ -39,6 +39,10 @@ namespace PlaqueAttack.Utilities
         /// </summary>
         private SheetDirection _direction;
 
+        
+
+        #region SpriteSheet animation constructors
+
         /// <summary>
         /// Create an animation.
         /// </summary>
@@ -73,7 +77,7 @@ namespace PlaqueAttack.Utilities
         }
 
         /// <summary>
-        /// Create an animation.
+        /// Create a spritesheet animation.
         /// </summary>
         /// <param name="frameLength">The length for which each frame is shown.</param>
         /// <param name="sheet">The underlying sprite sheet for the animation.</param>
@@ -83,6 +87,8 @@ namespace PlaqueAttack.Utilities
             _frameLength = frameLength;
             _frameTimer = TimeSpan.Zero;
         }
+
+        #endregion
 
         /// <summary>
         /// Whether the animation is reversed.
