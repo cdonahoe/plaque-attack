@@ -112,6 +112,7 @@
     <Compile Include="Board.cs" />
     <Compile Include="Block.cs" />
     <Compile Include="Food.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Utilities\Animation.cs" />
     <Compile Include="Utilities\DrawUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
