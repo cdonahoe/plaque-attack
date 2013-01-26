@@ -227,7 +227,18 @@ namespace PlaqueAttack
                     for (int i = 0; i < animationUpdateArray.Count; i++)
                     {
                         bool done = animationUpdateArray[i].Update(gameTime);
-                        if (done) animationUpdateArray.Remove(animationUpdateArray[i]);
+                        if (done)
+                        {
+                            // If a block has finished animating, make sure it is set to active
+                            if (animationUpdateArray[i].GetObject() is Block)
+                            {
+                                ((Block)animationUpdateArray[i].GetObject()).SetActive(true);
+                                if (board.gameLost) board.ClearBoard();
+                                currentFood = null;
+                            }
+                            animationUpdateArray.Remove(animationUpdateArray[i]);
+                            
+                        }
                     }
 
                     // Update food if set
