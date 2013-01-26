@@ -109,6 +109,9 @@
   <ItemGroup>
     <Compile Include="AssetModel.cs" />
     <Compile Include="Assets.cs" />
+    <Compile Include="Board.cs" />
+    <Compile Include="Block.cs" />
+    <Compile Include="Food.cs" />
     <Compile Include="Utilities\Animation.cs" />
     <Compile Include="Utilities\DrawUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -116,6 +119,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="Utilities\Resolution.cs" />
     <Compile Include="Utilities\SpriteSheet.cs" />
+    <Compile Include="Utilities\TransformAnimation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

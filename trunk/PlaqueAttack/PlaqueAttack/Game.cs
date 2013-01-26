@@ -108,6 +108,11 @@ namespace PlaqueAttack
         /// related content.  Calling base.Initialize will enumerate through any components
         /// and initialize them as well.
         /// </summary>
+        /// 
+
+        // TESTING
+        private Texture2D rect;
+        private TransformAnimation rectAnimation;
         protected override void Initialize()
         {
             _graphics.PreferredBackBufferWidth = WINDOW_WIDTH;
@@ -116,7 +121,7 @@ namespace PlaqueAttack
 
             IsMouseVisible = true;
 
-            _state = GameState.Loading;
+            _state = GameState.Playing;
 
             Window.Title = "Plaque Attack";
 
@@ -149,7 +154,7 @@ namespace PlaqueAttack
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
         /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        /// <param name="gameTime">Provides a snapshot of timing values.</param>      
         protected override void Update(GameTime gameTime)
         {
             var mouseState = Mouse.GetState();
@@ -215,6 +220,7 @@ namespace PlaqueAttack
 
                 case GameState.Playing:
 
+                    
                     _spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
                     _spriteBatch.End();
