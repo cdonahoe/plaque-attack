@@ -106,7 +106,7 @@ namespace PlaqueAttack
         /// Checks if the row is full.
         /// </summary>
         /// <returns>True if row is full</returns>
-        public bool CheckRow(int row)
+        public bool CheckIfBlockage(int row)
         {
             for (int i = 0; i < blockArray.GetLength(0); i++)
             {
@@ -147,7 +147,7 @@ namespace PlaqueAttack
                 blockArray[col, row] = block;
             }
             // Now that the block is placed, check if the row is full (game lost)
-            if (CheckRow(row) == true)
+            if (CheckIfBlockage(row) == true)
             {
                 // Game Over!!
                 GameLost();

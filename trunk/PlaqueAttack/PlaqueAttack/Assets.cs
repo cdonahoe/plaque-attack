@@ -24,7 +24,8 @@ namespace PlaqueAttack
            // new AssetModel("Small font", "Fonts/Small", typeof(SpriteFont)),
            new AssetModel("Artery", "Images/arteryBackground", typeof(Texture2D)),
            new AssetModel("Banana", "Images/bananaFadeIn", typeof(Texture2D)),
-           new AssetModel("Salad", "Images/saladFadeIn", typeof(Texture2D))
+           new AssetModel("Salad", "Images/saladFadeIn", typeof(Texture2D)),
+           new AssetModel("Block", "Images/square", typeof(Texture2D)),
 
             //new AssetModel("Click", "Music/Click", typeof(SoundEffect)),
         };
