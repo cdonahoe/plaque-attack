@@ -19,9 +19,10 @@ namespace PlaqueAttack
         /// </summary>
         public static readonly List<AssetModel> AssetList = new List<AssetModel>
         {
-            new AssetModel(FirstLoad),
+           new AssetModel(FirstLoad),
             //new AssetModel("Background Music", "Music/Global Game Jam 1", typeof(Song)),
            // new AssetModel("Small font", "Fonts/Small", typeof(SpriteFont)),
+           new AssetModel("Artery", "arteryBackground", typeof(Texture2D)),
 
             //new AssetModel("Click", "Music/Click", typeof(SoundEffect)),
         };
