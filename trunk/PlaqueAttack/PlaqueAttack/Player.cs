@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace PlaqueAttack
 {
-    class Player
+    public class Player
     {   
         KeyboardState keyboardState;
         KeyboardState oldState;
@@ -40,7 +40,7 @@ namespace PlaqueAttack
             this.color1 = color;
             this.position.X = startX;
             this.position.Y = startY;
-            this.bar1 = new Rectangle(startX + texture.Width, startY, gridWidth, texture.Height);
+            this.bar1 = new Rectangle(startX + texture.Width, (int)position.Y, gridWidth, texture.Height);
             this.barNumber = 1;
 
         }
@@ -70,13 +70,14 @@ namespace PlaqueAttack
 
                 if (keyboardState.IsKeyDown(Keys.Up) && !oldState.IsKeyDown(Keys.Up))
                     position.Y -= 40;
-                    
+                    //Console.Write("player" + position.Y + "   " );
+                    //Console.Write("bar" + bar1.Y);
 
                 if (keyboardState.IsKeyDown(Keys.Down) && !oldState.IsKeyDown(Keys.Down))
                     position.Y += 40;
                     
 
-                if (keyboardState.IsKeyDown(Keys.Left) && !oldState.IsKeyDown(Keys.Left))
+                if (keyboardState.IsKeyDown(Keys.Right) && !oldState.IsKeyDown(Keys.Right))
                     kill = true;
 
                 oldState = keyboardState;
@@ -99,6 +100,11 @@ namespace PlaqueAttack
             }
 
 
+        }
+
+        public Vector2 GetPosition()
+        {
+            return position;
         }
 
 

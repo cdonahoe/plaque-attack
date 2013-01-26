@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace PlaqueAttack
 {
-    class Board
+    public class Board
     {
 
         Block[,] blockArray;

@@ -97,8 +97,8 @@ namespace PlaqueAttack
         /// machine.
         /// </summary>
         private GameState _state;
-        private Board board;
-        private Player player1;
+        public Board board;
+        public Player player1;
         private List<TransformAnimation> animationUpdateArray;
         private Food currentFood;
         private int spawnTimer = 0;
@@ -136,8 +136,8 @@ namespace PlaqueAttack
             animationUpdateArray = new List<TransformAnimation>();
             //TESTING
             block = new Block(Block.BlockColor.Orange, new Vector2(100, 100));
-            playerTexture = DrawUtils.CreateFilledRectangle(_graphics.GraphicsDevice, 40, 40, Color.Green, Color.Green);
-            player1 = new Player(playerTexture, 1, Color.Green);
+            playerTexture = DrawUtils.CreateFilledRectangle(_graphics.GraphicsDevice, 40, 40, Color.Yellow, Color.Yellow);
+            player1 = new Player(playerTexture, 1, Color.Yellow);
 
             currentFood = new Food(Food.FoodTypes.Banana);
 
@@ -254,12 +254,15 @@ namespace PlaqueAttack
 
                     player1.Update();
                     Block[,] blockArray = board.GetBoard();
+                    playerBlockCollision(player1, board.GetBoard());
+                    /*
                     foreach (Block b in blockArray){
                         if (b != null)
                         {
-                            b.playerBlockCollision(player1);
+                            playerBlockCollision(player1, b);
                         }
                     }
+                     * */
                     break;
             }
 
@@ -359,7 +362,9 @@ namespace PlaqueAttack
                     }
                     
                     //players
+                     Texture2D barTexture = DrawUtils.CreateFilledRectangle(_graphics.GraphicsDevice, 480, 40, Color.Yellow, Color.Yellow);
                     _spriteBatch.Draw(playerTexture, player1.position, Color.White);
+                    _spriteBatch.Draw(barTexture, player1.position, Color.White);
 
                     // Draw 
                     Animation a = new Animation(5, 0.2, 50, 50, 5, 1, 0, 0, 1); 
@@ -378,7 +383,69 @@ namespace PlaqueAttack
             return Math.Sqrt((b.X - a.X) * (b.X - a.X) + (b.Y - a.Y) * (b.Y - a.Y));
         }
 
+        #region Game Methods
+        public void playerBlockCollision(Player player, Block[,] blocks)
+        {
 
+            if(player.kill == true)
+            {
+                foreach (Block b in blocks)
+                {
+                    if (b != null)
+                    {
+                        Console.WriteLine("checked space");
+                        if (player.barNumber == 1)
+                        {
+                            Console.WriteLine("checked player");
+                           //checks if player bar intersects block
+                            Rectangle r = new Rectangle((int)b.GetLoc().X, (int)b.GetLoc().Y, 40, 40);
+                            Rectangle bar = new Rectangle((int)player.GetPosition().X + 20, (int)player.GetPosition().Y, 480, 40);
+
+                            Console.WriteLine("Player:" + (int)player.GetPosition().X + " , " + (int)player.GetPosition().Y + " , " + 480 + " , " + 40);
+                            Console.WriteLine("block:" + b.GetLoc().X + " , " + (int)b.GetLoc().Y + " , " + 40 + " , " + 40); 
+                            
+                            if (bar.Intersects(r))
+                            {
+                                Console.WriteLine("checked collision");
+                                //checks if bar and block colors match
+                                if (player.color1.Equals(b.GetColor()))
+                                {
+                                    blocks[b.x, b.y] = null;
+                                    Console.WriteLine("Checked color, Collision should happen");
+                                }
+
+                            }
+                        }
+                        /*
+                        if (player.barNumber == 2)
+                        {
+                            if (player.bar1.Intersects(b.bounds))
+                            {
+                                //checks if bar and block colors match
+                                if (player.color1.Equals(b.GetColor()))
+                                {
+                                    blocks[b.x, b.y] = null;
+                                }
+                            }
+                            if (player.bar2.Intersects(b.bounds))
+                            {
+                                if (player.color2.Equals(b.GetColor()))
+                                {
+                                    blocks[b.x, b.y] = null;
+                                }
+                            }
+                        
+                        }
+                    */
+                    }
+                }
+
+            }
+           
+
+        }
+
+        #endregion
 
         #region Drawing Methods
         /// <summary>
