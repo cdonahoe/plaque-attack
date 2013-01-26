@@ -25,7 +25,7 @@ namespace PlaqueAttack
         /// <summary>
         /// Designed window height.
         /// </summary>
-        public const int WINDOW_HEIGHT = 600;
+        public const int WINDOW_HEIGHT = 736;
 
         #endregion
 
@@ -97,6 +97,8 @@ namespace PlaqueAttack
         /// machine.
         /// </summary>
         private GameState _state;
+        private Board board;
+        private List<TransformAnimation> animationUpdateArray;
 
         #endregion
 
@@ -111,7 +113,7 @@ namespace PlaqueAttack
         /// 
 
         // TESTING
-        private Texture2D rect;
+        private Texture2D block;
         private TransformAnimation rectAnimation;
         protected override void Initialize()
         {
@@ -121,9 +123,13 @@ namespace PlaqueAttack
 
             IsMouseVisible = true;
 
-            _state = GameState.Playing;
+            _state = GameState.Loading;
 
             Window.Title = "Plaque Attack";
+
+            // Initialize things
+            board = new Board(12, 14);
+            animationUpdateArray = new List<TransformAnimation>();
 
             base.Initialize();
         }
@@ -165,7 +171,7 @@ namespace PlaqueAttack
 
                     if (Assets.Loaded)
                     {
-                        _state = GameState.TitleScreen;
+                        _state = GameState.Playing;
 
                         if (MediaPlayer.State != MediaState.Playing)
                         {
@@ -173,6 +179,16 @@ namespace PlaqueAttack
                             MediaPlayer.Volume = 1f;
                             //MediaPlayer.Play(Assets.Get<Song>("Background Music"));
                         }
+
+                        // TESTING Add a bunch of blocks to the board
+                        for (int i = 0; i < 50; i++)
+                        {
+                            Block b = new Block(Block.BlockColor.Blue, new Vector2(0, 0));
+                            Vector2 endPos = board.PlaceBlock(b);
+                            TransformAnimation tran = new TransformAnimation(b, TimeSpan.FromSeconds(1), b.GetLoc(), TransformGridToScreen(endPos), TransformAnimation.AnimationCurve.Smooth);
+                            animationUpdateArray.Add(tran);
+                        }
+
                     }
                     else
                     {
@@ -193,11 +209,21 @@ namespace PlaqueAttack
                     break;
 
                 case GameState.Playing:
-                               
+                    // Update any transform animations; delete them if they're done
+                    for (int i = 0; i < animationUpdateArray.Count; i++)
+                    {
+                        bool done = animationUpdateArray[i].Update(gameTime);
+                        if (done) animationUpdateArray.Remove(animationUpdateArray[i]);
+                    }
                     break;
             }
 
             base.Update(gameTime);
+        }
+
+        public Vector2 TransformGridToScreen(Vector2 gridLocation)
+        {
+            return new Vector2(260 + gridLocation.X * 40, 40 + gridLocation.Y * 40);
         }
 
         /// <summary>
@@ -220,8 +246,31 @@ namespace PlaqueAttack
 
                 case GameState.Playing:
 
-                    
+                    block = DrawUtils.CreateFilledRectangle(_graphics.GraphicsDevice, 40, 40, Color.Green, Color.Green);
+
+
+
                     _spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+                    // Draw background
+                    Texture2D artery = Assets.Get<Texture2D>("Artery");
+                    _spriteBatch.Draw(artery, new Vector2(236, 0), Color.White);
+
+                    // Draw blocks from the board
+                    Block[,] b = board.GetBoard();
+                    for (int c = 0; c < b.GetLength(0); c++)
+                    {
+                        for (int r = 0; r < b.GetLength(1); r++)
+                        {
+                            if (b[c, r] != null)
+                            {
+                                _spriteBatch.Draw(block, b[c, r].GetLoc(), Color.White);
+                            }
+                        }
+                    }
+                    
+                    
+
+                    // Draw 
 
                     _spriteBatch.End();
 

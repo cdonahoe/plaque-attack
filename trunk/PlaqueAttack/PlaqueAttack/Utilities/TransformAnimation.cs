@@ -15,6 +15,7 @@ namespace PlaqueAttack.Utilities
         private TimeSpan duration;
         private TimeSpan currentStep;
         private AnimationCurve curve;
+        private Object obj;
 
                 /// <summary>
         /// Type of animation curve for translation animation
@@ -29,11 +30,13 @@ namespace PlaqueAttack.Utilities
         /// Create a translate animation that will lerp (todo: other curves) between
         /// start and end points.
         /// </summary>
+        /// <param name="obj">The object to animate</param>
         /// <param name="duration">The duration of the animation</param>
         /// <param name="start">Start point</param>
         /// <param name="end">End point</param>
-        public TransformAnimation(TimeSpan duration, Vector2 start, Vector2 end, AnimationCurve curve) 
+        public TransformAnimation(Object obj, TimeSpan duration, Vector2 start, Vector2 end, AnimationCurve curve) 
         {
+            this.obj = obj;
             startPosition = start;
             endPosition = end;
             currentPosition = start;
@@ -58,14 +61,12 @@ namespace PlaqueAttack.Utilities
                     if (curve == TransformAnimation.AnimationCurve.Lerp)
                     {
                         currentPosition = Vector2.Lerp(startPosition, endPosition, 1);
-                        return false;
                     }
-                    if (curve == TransformAnimation.AnimationCurve.Smooth)
+                    else if (curve == TransformAnimation.AnimationCurve.Smooth)
                     {
                         currentPosition = Vector2.SmoothStep(startPosition, endPosition, 1);
-                        return false;
                     }
-                    throw new Exception("AnimationCurve type not found!");
+                    else throw new Exception("AnimationCurve type not found!");
 
                 }
                 // If it's not the last step
@@ -75,15 +76,15 @@ namespace PlaqueAttack.Utilities
                     if (curve == TransformAnimation.AnimationCurve.Lerp)
                     {
                         currentPosition = Vector2.Lerp(startPosition, endPosition, amount);
-                        return false;
                     }
-                    if (curve == TransformAnimation.AnimationCurve.Smooth)
+                    else if (curve == TransformAnimation.AnimationCurve.Smooth)
                     {
                         currentPosition = Vector2.SmoothStep(startPosition, endPosition, amount);
-                        return false;
                     }
-                    throw new Exception("AnimationCurve type not found!");
+                    else throw new Exception("AnimationCurve type not found!");
                 }
+                if (obj is Block) ((Block)obj).SetLoc(currentPosition);
+
             }
             return true;
         }

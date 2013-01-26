@@ -15,15 +15,14 @@ namespace PlaqueAttack
 
         public enum BlockColor
         {
-            // These are placeholders!
-            Red,
-            Blue,
-            Cyan,
-            Magenta,
             Yellow,
-            Green,
-            Orange,
+            Blue,
             Purple,
+            Red,
+            Brown,
+            Green,
+            Magenta,
+            Orange
         }
 
         /// <summary>
@@ -38,23 +37,32 @@ namespace PlaqueAttack
             loc = location;
         }
 
-        public void setActive(bool active)
+        public void SetActive(bool active)
         {
             this.active = active;
         }
 
-        public bool isActive()
+        public bool IsActive()
         {
             return active;
         }
 
-        public void setGridLoc(int r, int c) {
+        public void SetGridLoc(int r, int c)
+        {
             gridLoc = new Vector2(r, c);
         }
-
-        public void getGridLoc()
+        public void SetLoc(Vector2 location)
         {
-            //return 
+            loc = location;
+        }
+
+        public Vector2 GetGridLoc()
+        {
+            return gridLoc;
+        }
+        public Vector2 GetLoc()
+        {
+            return loc;
         }
 
         public void Draw()
