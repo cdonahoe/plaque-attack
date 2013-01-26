@@ -12,6 +12,7 @@ namespace PlaqueAttack
         Block[,] blockArray;
         Random rand;
         int numBlocks;
+        public bool gameLost = false;
 
         public Board(int cols, int rows) 
         {
@@ -149,11 +150,15 @@ namespace PlaqueAttack
             if (CheckRow(row) == true)
             {
                 // Game Over!!
-                Console.WriteLine("GAME OVER!!!!");
-                ClearBoard();
+                GameLost();
             }
             numBlocks++;
             return new Vector2(col, row);
+        }
+
+        public void GameLost()
+        {
+            gameLost = true;
         }
 
         /// <summary>

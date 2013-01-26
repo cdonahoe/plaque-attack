@@ -87,15 +87,14 @@ namespace PlaqueAttack
             // Choose a random block color based on num available
             int blockColor = rand.Next(numColors);
             Block b = new Block((Block.BlockColor) blockColor, new Vector2(0,-50));
-            board.PlaceBlock(b);
             Vector2 endPos = Game.TransformGridToScreen(board.PlaceBlock(b));
             Vector2 startPos = new Vector2(endPos.X, -40);
             TransformAnimation tran = new TransformAnimation(b, TimeSpan.FromSeconds(0.5), startPos, endPos, TransformAnimation.AnimationCurve.Smooth);
             animationUpdater.Add(tran);
 
             numBlocks--;
-            Console.WriteLine("Food: " + numBlocks);
-            Console.WriteLine("Board: " + board.GetNumBlocks());
+            //Console.WriteLine("Food: " + numBlocks);
+            //Console.WriteLine("Board: " + board.GetNumBlocks());
             if (numBlocks == 0) return false;
             return true;
         }

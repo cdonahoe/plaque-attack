@@ -94,5 +94,10 @@ namespace PlaqueAttack.Utilities
         {
             return currentPosition;
         }
+
+        public Object GetObject()
+        {
+            return obj;
+        }
     }
 }
