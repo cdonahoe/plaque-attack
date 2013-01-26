@@ -19,14 +19,14 @@ namespace PlaqueAttack
 
         public enum BlockColor
         {
-            Yellow,
-            Blue,
-            Purple,
-            Red,
-            Brown,
-            Green,
-            Magenta,
-            Orange
+            Yellow = 0,
+            Blue = 1,
+            Purple = 2,
+            Red = 3,
+            Brown = 4,
+            Green = 5,
+            Magenta = 6,
+            Orange = 7,
         }
 
         /// <summary>
@@ -66,6 +66,10 @@ namespace PlaqueAttack
             loc = location;
         }
 
+        public BlockColor GetColor()
+        {
+            return color;
+        }
 
         //checks for collision 
         public void playerBlockCollision(Player player)

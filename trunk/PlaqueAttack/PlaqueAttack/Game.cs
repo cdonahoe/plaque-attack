@@ -99,6 +99,8 @@ namespace PlaqueAttack
         private GameState _state;
         private Board board;
         private List<TransformAnimation> animationUpdateArray;
+        private Food currentFood;
+        private int spawnTimer = 0;
 
         #endregion
 
@@ -132,6 +134,8 @@ namespace PlaqueAttack
             animationUpdateArray = new List<TransformAnimation>();
             //TESTING
             block = new Block(Block.BlockColor.Orange, new Vector2(100, 100));
+
+            currentFood = new Food(Food.FoodTypes.Banana);
 
             base.Initialize();
         }
@@ -183,13 +187,15 @@ namespace PlaqueAttack
                         }
 
                         // TESTING Add a bunch of blocks to the board
+                        Food banana = new Food(Food.FoodTypes.Banana);
                         for (int i = 0; i < 50; i++)
                         {
-                            Block b = new Block(Block.BlockColor.Blue, new Vector2(0, 0));
-                            Vector2 endPos = TransformGridToScreen(board.PlaceBlock(b));
-                            Vector2 startPos = new Vector2(endPos.X, -40);
-                            TransformAnimation tran = new TransformAnimation(b, TimeSpan.FromSeconds(1), startPos, endPos, TransformAnimation.AnimationCurve.Smooth);
-                            animationUpdateArray.Add(tran);
+                            //Block b = new Block(Block.BlockColor.Orange, new Vector2(0, 0));
+                            //Vector2 endPos = TransformGridToScreen(board.PlaceBlock(b));
+                            //Vector2 startPos = new Vector2(endPos.X, -40);
+                            //TransformAnimation tran = new TransformAnimation(b, TimeSpan.FromSeconds(0.5), startPos, endPos, TransformAnimation.AnimationCurve.Smooth);
+                            //animationUpdateArray.Add(tran);
+                            //banana.spawnToBoard(board, animationUpdateArray);
                         }
                     }
                     else
@@ -217,13 +223,24 @@ namespace PlaqueAttack
                         bool done = animationUpdateArray[i].Update(gameTime);
                         if (done) animationUpdateArray.Remove(animationUpdateArray[i]);
                     }
+
+                    // Update food if set
+                    spawnTimer++;
+                    if (currentFood != null)
+                    { 
+                        if (spawnTimer >= currentFood.GetSpeed())
+                        {
+                            currentFood.spawnToBoard(board, animationUpdateArray);
+                            spawnTimer = 0;
+                        }
+                    }
                     break;
             }
 
             base.Update(gameTime);
         }
 
-        public Vector2 TransformGridToScreen(Vector2 gridLocation)
+        public static Vector2 TransformGridToScreen(Vector2 gridLocation)
         {
             return new Vector2(260 + gridLocation.X * 40, 40 + gridLocation.Y * 40);
         }
@@ -248,7 +265,7 @@ namespace PlaqueAttack
 
                 case GameState.Playing:
 
-                    Texture2D blockTexture = DrawUtils.CreateFilledRectangle(_graphics.GraphicsDevice, 40, 40, Color.Green, Color.Green);
+                    Texture2D blockTexture = DrawUtils.CreateFilledRectangle(_graphics.GraphicsDevice, 40, 40, Color.Black, Color.White);
 
 
 
@@ -265,13 +282,59 @@ namespace PlaqueAttack
                         {
                             if (b[c, r] != null)
                             {
-                                _spriteBatch.Draw(blockTexture, b[c, r].GetLoc(), Color.White);
+                                Color color = new Color();
+                                Block.BlockColor bc = b[c, r].GetColor();
+                                switch (bc)
+                                {
+                                    case Block.BlockColor.Yellow:
+                                    {
+                                        color = Color.Yellow;
+                                        break;
+                                    }
+                                    case Block.BlockColor.Blue:
+                                    {
+                                        color = Color.Blue;
+                                        break;
+                                    }
+                                    case Block.BlockColor.Purple:
+                                    {
+                                        color = Color.Purple;
+                                        break;
+                                    }
+                                    case Block.BlockColor.Red:
+                                    {
+                                        color = Color.Red;
+                                        break;
+                                    }
+                                    case Block.BlockColor.Brown:
+                                    {
+                                        color = Color.Brown;
+                                        break;
+                                    }
+                                    case Block.BlockColor.Green:
+                                    {
+                                        color = Color.Green;
+                                        break;
+                                    }
+                                    case Block.BlockColor.Magenta:
+                                    {
+                                        color = Color.Magenta;
+                                        break;
+                                    }
+                                    case Block.BlockColor.Orange:
+                                    {
+                                        color = Color.Orange;
+                                        break;
+                                    }
+                                }
+                                _spriteBatch.Draw(blockTexture, b[c, r].GetLoc(), color);
                             }
                         }
                     }
                     
 
                     // Draw 
+                    Animation a = new Animation(5, 0.2, 50, 50, 5, 1, 0, 0, 1); 
                     Texture2D banana = Assets.Get<Texture2D>("Banana");
                     _spriteBatch.Draw(banana, new Vector2(4, 68), Color.White);
                     _spriteBatch.End();

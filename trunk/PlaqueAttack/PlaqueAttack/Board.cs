@@ -11,11 +11,13 @@ namespace PlaqueAttack
 
         Block[,] blockArray;
         Random rand;
+        int numBlocks;
 
         public Board(int cols, int rows) 
         {
             blockArray = new Block[cols, rows];
             rand = new Random();
+            numBlocks = 0;
         }
 
         /// <summary>
@@ -30,6 +32,7 @@ namespace PlaqueAttack
             if (blockArray[c, r] == null)
             {
                 blockArray[c, r] = block;
+                numBlocks++;
                 return true;
             }
             return false;
@@ -40,14 +43,26 @@ namespace PlaqueAttack
             return blockArray;
         }
 
+        public int GetNumBlocks()
+        {
+            return numBlocks;
+        }
+
         /// <summary>
-        /// Sets the value of c, r to null, even if already null.
+        /// Attempts the value of c, r to null.
+        /// Returns false if alreaey null
         /// </summary>
         /// <param name="c"></param>
         /// <param name="r"></param>
-        public void ClearTile(int c, int r)
+        public bool ClearTile(int c, int r)
         {
-            blockArray[c, r] = null;
+            if (blockArray[c, r] != null)
+            {
+                blockArray[c, r] = null;
+                numBlocks--;
+                return true;
+            }
+            return false;
         }
 
         /// <summary>
@@ -134,8 +149,10 @@ namespace PlaqueAttack
             if (CheckRow(row) == true)
             {
                 // Game Over!!
+                Console.WriteLine("GAME OVER!!!!");
                 ClearBoard();
             }
+            numBlocks++;
             return new Vector2(col, row);
         }
 
@@ -145,6 +162,7 @@ namespace PlaqueAttack
         public void ClearBoard()
         {
             blockArray = new Block[blockArray.GetLength(0), blockArray.GetLength(1)];
+            numBlocks = 0;
         }
 
     }
