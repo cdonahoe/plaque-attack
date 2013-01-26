@@ -11,6 +11,7 @@ namespace PlaqueAttack
     class Player
     {   
         KeyboardState keyboardState;
+        KeyboardState oldState;
 
         private int id;
 
@@ -62,33 +63,38 @@ namespace PlaqueAttack
         public void Update()
         {
             kill = false;
+
             keyboardState = Keyboard.GetState();
 
             if(this.id == 1){
 
-                if (keyboardState.IsKeyDown(Keys.Up))
+                if (keyboardState.IsKeyDown(Keys.Up) && !oldState.IsKeyDown(Keys.Up))
                     position.Y -= 40;
+                    
 
-                if (keyboardState.IsKeyDown(Keys.Down))
+                if (keyboardState.IsKeyDown(Keys.Down) && !oldState.IsKeyDown(Keys.Down))
                     position.Y += 40;
+                    
 
-                if (keyboardState.IsKeyDown(Keys.Left))
+                if (keyboardState.IsKeyDown(Keys.Left) && !oldState.IsKeyDown(Keys.Left))
                     kill = true;
-                   
+
+                oldState = keyboardState;
                 LockPlayer();
             }
 
             if(this.id == 2) {
 
-                if (keyboardState.IsKeyDown(Keys.W))
+                if (keyboardState.IsKeyDown(Keys.W) && !oldState.IsKeyDown(Keys.W))
                     position.Y -= 40;
 
-                if (keyboardState.IsKeyDown(Keys.S))
+                if (keyboardState.IsKeyDown(Keys.S) && !oldState.IsKeyDown(Keys.S))
                     position.Y += 40;
 
-                if (keyboardState.IsKeyDown(Keys.D))
+                if (keyboardState.IsKeyDown(Keys.D) && !oldState.IsKeyDown(Keys.D))
                     kill = true;
-                
+
+                oldState = keyboardState;
                 LockPlayer();
             }
 
