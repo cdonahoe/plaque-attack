@@ -1,0 +1,6 @@
+c:\users\george\documents\visual studio 2010\Projects\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\PlaqueAttack.exe
+c:\users\george\documents\visual studio 2010\Projects\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\PlaqueAttack.pdb
+c:\users\george\documents\visual studio 2010\Projects\PlaqueAttack\PlaqueAttack\PlaqueAttack\obj\x86\Debug\PlaqueAttack.csprojResolveAssemblyReference.cache
+c:\users\george\documents\visual studio 2010\Projects\PlaqueAttack\PlaqueAttack\PlaqueAttack\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+c:\users\george\documents\visual studio 2010\Projects\PlaqueAttack\PlaqueAttack\PlaqueAttack\obj\x86\Debug\PlaqueAttack.exe
+c:\users\george\documents\visual studio 2010\Projects\PlaqueAttack\PlaqueAttack\PlaqueAttack\obj\x86\Debug\PlaqueAttack.pdb
