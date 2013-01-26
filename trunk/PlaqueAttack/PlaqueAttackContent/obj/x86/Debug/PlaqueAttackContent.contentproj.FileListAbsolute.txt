@@ -1,1 +1,2 @@
 c:\users\george\documents\visual studio 2010\Projects\PlaqueAttack\PlaqueAttack\PlaqueAttackContent\obj\x86\Debug\PlaqueAttackContent.contentprojResolveAssemblyReference.cache
+C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttackContent\obj\x86\Debug\PlaqueAttackContent.contentprojResolveAssemblyReference.cache
