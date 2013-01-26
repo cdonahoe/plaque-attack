@@ -98,6 +98,7 @@ namespace PlaqueAttack
         /// </summary>
         private GameState _state;
         private Board board;
+        private Player player1;
         private List<TransformAnimation> animationUpdateArray;
         private Food currentFood;
         private int spawnTimer = 0;
@@ -116,6 +117,7 @@ namespace PlaqueAttack
 
         // TESTING
         private Block block;
+        private Texture2D playerTexture;
         private TransformAnimation rectAnimation;
         protected override void Initialize()
         {
@@ -134,6 +136,8 @@ namespace PlaqueAttack
             animationUpdateArray = new List<TransformAnimation>();
             //TESTING
             block = new Block(Block.BlockColor.Orange, new Vector2(100, 100));
+            playerTexture = DrawUtils.CreateFilledRectangle(_graphics.GraphicsDevice, 40, 40, Color.Green, Color.Green);
+            player1 = new Player(playerTexture, 1, Color.Green);
 
             currentFood = new Food(Food.FoodTypes.Banana);
 
@@ -186,6 +190,8 @@ namespace PlaqueAttack
                             //MediaPlayer.Play(Assets.Get<Song>("Background Music"));
                         }
 
+                        
+
                         // TESTING Add a bunch of blocks to the board
                         Food banana = new Food(Food.FoodTypes.Banana);
                         for (int i = 0; i < 50; i++)
@@ -232,6 +238,15 @@ namespace PlaqueAttack
                         {
                             currentFood.spawnToBoard(board, animationUpdateArray);
                             spawnTimer = 0;
+                        }
+                    }
+
+                    player1.Update();
+                    Block[,] blockArray = board.GetBoard();
+                    foreach (Block b in blockArray){
+                        if (b != null)
+                        {
+                            b.playerBlockCollision(player1);
                         }
                     }
                     break;
@@ -332,6 +347,8 @@ namespace PlaqueAttack
                         }
                     }
                     
+                    //players
+                    _spriteBatch.Draw(playerTexture, player1.position, Color.White);
 
                     // Draw 
                     Animation a = new Animation(5, 0.2, 50, 50, 5, 1, 0, 0, 1); 
@@ -349,6 +366,8 @@ namespace PlaqueAttack
         {
             return Math.Sqrt((b.X - a.X) * (b.X - a.X) + (b.Y - a.Y) * (b.Y - a.Y));
         }
+
+
 
         #region Drawing Methods
         /// <summary>
