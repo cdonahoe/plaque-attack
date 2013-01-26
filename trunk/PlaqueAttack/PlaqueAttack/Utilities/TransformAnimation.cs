@@ -84,6 +84,7 @@ namespace PlaqueAttack.Utilities
                     else throw new Exception("AnimationCurve type not found!");
                 }
                 if (obj is Block) ((Block)obj).SetLoc(currentPosition);
+                return false;
 
             }
             return true;
