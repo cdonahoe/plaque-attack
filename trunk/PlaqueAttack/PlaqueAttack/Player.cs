@@ -9,21 +9,27 @@ using Microsoft.Xna.Framework.Input;
 namespace PlaqueAttack
 {
     class Player
-    {
-        private Texture2D texture;
-        private Vector2 position;
-        private int id;
-        public Color color1;
-        public Color color2;
+    {   
         KeyboardState keyboardState;
-        static int startX = 100;
-        static int startY = 0;
-        public bool kill;
-        Rectangle playArea = new Rectangle(startX, startY, 40, 640);
+
+        private int id;
+
+        public Texture2D texture;
+        public Vector2 position;
+        public int barNumber;
         public  Rectangle bar1;
         public Rectangle bar2;
+        public Color color1;
+        public Color color2;
+        public bool kill;
+
         static int gridWidth = 480;
         static int gridHeight = 640;
+        static int startX = 220;
+        static int startY = 0;
+ 
+        Rectangle playArea = new Rectangle(startX, startY, 40, 640);
+        
 
         #region Constructor Region
         public Player(Texture2D texture, int id, Color color)
@@ -34,7 +40,7 @@ namespace PlaqueAttack
             this.position.X = startX;
             this.position.Y = startY;
             this.bar1 = new Rectangle(startX + texture.Width, startY, gridWidth, texture.Height);
-
+            this.barNumber = 1;
 
         }
 
@@ -48,7 +54,7 @@ namespace PlaqueAttack
             this.position.Y = startY;
             this.bar1 = new Rectangle(startX + texture.Width, startY, gridWidth, (texture.Height/2));
             this.bar2 = new Rectangle(startX + texture.Width, startY + (texture.Height/2), gridWidth, (texture.Height / 2));
-
+            this.barNumber = 2;
         }
 
         #endregion

@@ -17,3 +17,4 @@ C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\obj\x86\Debug\M
 C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\obj\x86\Debug\PlaqueAttack.exe
 C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\obj\x86\Debug\PlaqueAttack.pdb
 C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\arteryBackground.xnb
+C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\arteryBackground.xnb
