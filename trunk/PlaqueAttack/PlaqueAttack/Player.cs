@@ -20,11 +20,12 @@ namespace PlaqueAttack
         KeyboardState keyboardState;
         static int startX = 100;
         static int startY = 0;
+        public bool kill;
         Rectangle playArea = new Rectangle(startX, startY, 40, 640);
         private Rectangle bar1;
         private Rectangle bar2;
-        int gridWidth;
-        int gridHeight;
+        static int gridWidth;
+        static int gridHeight;
 
         #region Constructor Region
         public Player(Texture2D texture, int id, Color color)
@@ -58,6 +59,7 @@ namespace PlaqueAttack
         public void Update()
         {
             motion = Vector2.Zero;
+            kill = false;
 
             keyboardState = Keyboard.GetState();
 
@@ -70,7 +72,7 @@ namespace PlaqueAttack
                     motion.Y = 1;
 
                 if (keyboardState.IsKeyDown(Keys.Left))
-                    Kill();
+                    kill = true;
                     
                 motion.Y *= playerSpeed;
                 position += motion;
@@ -86,7 +88,7 @@ namespace PlaqueAttack
                     motion.Y = 1;
 
                 if (keyboardState.IsKeyDown(Keys.D))
-                    Kill();
+                    kill = true;
 
                 motion.Y *= playerSpeed;
                 position += motion;
@@ -101,9 +103,6 @@ namespace PlaqueAttack
             spriteBatch.Draw(texture, position, Color.White);
         }
 
-        public void Kill()
-        {
-        }
 
         public void LockPlayer()
         {
