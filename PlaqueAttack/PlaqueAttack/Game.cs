@@ -142,7 +142,7 @@ namespace PlaqueAttack
             board = new Board(12, 14);
             animationUpdateArray = new List<TransformAnimation>();
 
-            player1 = new Player(1, Block.BlockColor.Yellow);
+            player1 = new Player(1, Block.BlockColor.Yellow, Block.BlockColor.Blue);
 
             //currentFood = new Food(Food.FoodTypes.Banana);
             foodLevels = new Queue<Food>();
@@ -383,14 +383,26 @@ namespace PlaqueAttack
                     }
                     
                     //players
-                    Texture2D barTexture = DrawUtils.CreateFilledRectangle(_graphics.GraphicsDevice, 480, 40, Color.Yellow, Color.Yellow);
-                    Texture2D playerTexture = DrawUtils.CreateFilledRectangle(_graphics.GraphicsDevice, 40, 40, Color.Yellow, Color.Yellow);
+                    Texture2D barTexture = DrawUtils.CreateFilledRectangle(_graphics.GraphicsDevice, 480, 40, Color.White, Color.White);
+                    Texture2D playerTexture = DrawUtils.CreateFilledRectangle(_graphics.GraphicsDevice, 40, 40, Color.White, Color.White);
                     Vector2 barPosition = new Vector2(player1.position.X + 40, player1.position.Y);
                     Vector2 endPosition = new Vector2(player1.position.X + 520, player1.position.Y);
+                    Vector2 startPosition = new Vector2(player1.position.X, player1.position.Y + 40);
+                    Vector2 barPosition2 = new Vector2(player1.position.X + 40, player1.position.Y + 40);
+                    Vector2 endPosition2 = new Vector2(player1.position.X + 520, player1.position.Y + 40);
+                    //if (player1.barNumber == 1)
+                    //{
+                        _spriteBatch.Draw(playerTexture, player1.position, Color.Yellow);
+                        _spriteBatch.Draw(playerTexture, endPosition, Color.Yellow);
+                        _spriteBatch.Draw(barTexture, barPosition, Color.Transparent);
+                    //}
+                    if (player1.barNumber == 2)
+                    {
+                        _spriteBatch.Draw(playerTexture, startPosition, Color.Blue);
+                        _spriteBatch.Draw(playerTexture, endPosition2, Color.Blue);
+                        _spriteBatch.Draw(barTexture, barPosition2, new Color(0,0,1,.05f));
 
-                    _spriteBatch.Draw(playerTexture, player1.position, Color.White);
-                    _spriteBatch.Draw(playerTexture, endPosition, Color.White);
-                    _spriteBatch.Draw(barTexture, barPosition, Color.White);
+                    }
 
                     // Draw 
 
