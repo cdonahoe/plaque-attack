@@ -132,6 +132,8 @@ namespace PlaqueAttack
             _graphics.ApplyChanges();
 
             IsMouseVisible = true;
+            SoundEffect.MasterVolume = 0.1f;
+
 
             _state = GameState.Loading;
             playingState = PlayingState.Title;
@@ -144,10 +146,12 @@ namespace PlaqueAttack
 
             player1 = new Player(1, Block.BlockColor.Yellow, Block.BlockColor.Blue);
 
-            //currentFood = new Food(Food.FoodTypes.Banana);
             foodLevels = new Queue<Food>();
             foodLevels.Enqueue(new Food(Food.FoodTypes.Banana));
             foodLevels.Enqueue(new Food(Food.FoodTypes.Salad));
+            foodLevels.Enqueue(new Food(Food.FoodTypes.Hamburger));
+            foodLevels.Enqueue(new Food(Food.FoodTypes.Pizza));
+            foodLevels.Enqueue(new Food(Food.FoodTypes.IceCream));
 
             base.Initialize();
         }
@@ -210,6 +214,12 @@ namespace PlaqueAttack
                     switch (playingState)
                     {
                         case PlayingState.Title:
+                            if (MediaPlayer.State != MediaState.Playing)
+                            {
+                                MediaPlayer.IsRepeating = true;
+                                MediaPlayer.Volume = 1f;
+                                MediaPlayer.Play(Assets.Get<Song>("Title"));
+                            }
                             // Start when any key is pressed
                             if (keyboardState.GetPressedKeys().Length > 0)
                             {
@@ -217,17 +227,42 @@ namespace PlaqueAttack
                             }
                             break;
                         case PlayingState.Transition:
-                            if (currentFood == null) currentFood = foodLevels.Dequeue();
+                            if (currentFood == null)
+                            {
+                                MediaPlayer.Stop();
+                                var vict = Assets.Get<SoundEffect>("Stage Complete");
+                                vict.Play();
+                                currentFood = foodLevels.Dequeue();
+                            }
                             currentFood.anim.Update(gameTime);
                             currentFood.clip = currentFood.anim.CurrentFrame;
                             if (currentFood.anim.IsFinished())
+                            {
+                                switch (currentFood.foodType)
+                                {
+                                    case Food.FoodTypes.Banana:
+                                        MediaPlayer.Play(Assets.Get<Song>("Swing"));
+                                        break;
+                                    case Food.FoodTypes.Salad:
+                                        MediaPlayer.Play(Assets.Get<Song>("Swing Fast"));
+                                        break;
+                                    case Food.FoodTypes.Hamburger:
+                                        MediaPlayer.Play(Assets.Get<Song>("Chest"));
+                                        break;
+                                    case Food.FoodTypes.Pizza:
+                                        MediaPlayer.Play(Assets.Get<Song>("Chest Fast"));
+                                        break;
+                                    case Food.FoodTypes.IceCream:
+                                        MediaPlayer.Play(Assets.Get<Song>("Disheartening"));
+                                        break;
+                                }
                                 playingState = PlayingState.Level;
+                            }
                             break;
                         case PlayingState.Level:
                             Rectangle temp = currentFood.anim.CurrentFrame;
                             float percent = (float) currentFood.numBlocks / (float) currentFood.startBlocks;
                             temp.Width = (int) (currentFood.anim.CurrentFrame.Width * percent);
-                            //Console.WriteLine(currentFood.numBlocks / currentFood.startBlocks);
                             currentFood.clip = temp;
 
                             spawnTimer++;
@@ -258,6 +293,17 @@ namespace PlaqueAttack
                             }
                             break;
                         case PlayingState.GameOver:
+                            if (keyboardState.GetPressedKeys().Length > 0)
+                            {
+                                board.ClearBoard();
+                                foodLevels = new Queue<Food>();
+                                foodLevels.Enqueue(new Food(Food.FoodTypes.Banana));
+                                foodLevels.Enqueue(new Food(Food.FoodTypes.Salad));
+                                foodLevels.Enqueue(new Food(Food.FoodTypes.Hamburger));
+                                foodLevels.Enqueue(new Food(Food.FoodTypes.Pizza));
+                                foodLevels.Enqueue(new Food(Food.FoodTypes.IceCream));
+                                playingState = PlayingState.Title;
+                            }
                             Console.WriteLine("GameOver state");
                             break;
                         case PlayingState.Victory:
@@ -274,10 +320,14 @@ namespace PlaqueAttack
                             if (animationUpdateArray[i].GetObject() is Block)
                             {
                                 ((Block)animationUpdateArray[i].GetObject()).SetActive(true);
+                                
+                                // GAME OVER!!!
                                 if (board.gameLost)
                                 {
-                                    board.ClearBoard();
                                     currentFood = null;
+                                    MediaPlayer.Stop();
+                                    var gameover = Assets.Get<SoundEffect>("Game Over");
+                                    gameover.Play();
                                     playingState = PlayingState.GameOver;
                                 }  
                             }
@@ -323,6 +373,8 @@ namespace PlaqueAttack
                     Texture2D artery = Assets.Get<Texture2D>("Artery");
                     _spriteBatch.Draw(artery, new Vector2(236, 0), Color.White);
 
+                    
+
                     // Draw blocks from the board
                     Texture2D blockTexture = Assets.Get<Texture2D>("Block");
                     Block[,] b = board.GetBoard();
@@ -338,42 +390,42 @@ namespace PlaqueAttack
                                 {
                                     case Block.BlockColor.Yellow:
                                     {
-                                        color = Color.Yellow;
+                                        color = new Color(255, 255, 0);
                                         break;
                                     }
                                     case Block.BlockColor.Blue:
                                     {
-                                        color = Color.Blue;
+                                        color = new Color(0, 255, 255);
                                         break;
                                     }
                                     case Block.BlockColor.Purple:
                                     {
-                                        color = Color.Purple;
+                                        color = new Color(128, 0, 128);
                                         break;
                                     }
                                     case Block.BlockColor.Red:
                                     {
-                                        color = Color.Red;
+                                        color = new Color(255, 0, 0);
                                         break;
                                     }
                                     case Block.BlockColor.Brown:
                                     {
-                                        color = Color.Brown;
+                                        color = new Color(180, 85, 0);
                                         break;
                                     }
                                     case Block.BlockColor.Green:
                                     {
-                                        color = Color.Green;
+                                        color = new Color(12, 255, 0);
                                         break;
                                     }
                                     case Block.BlockColor.Magenta:
                                     {
-                                        color = Color.Magenta;
+                                        color = new Color(255, 0, 255);
                                         break;
                                     }
                                     case Block.BlockColor.Orange:
                                     {
-                                        color = Color.Orange;
+                                        color = new Color(255, 180, 0);
                                         break;
                                     }
                                 }
@@ -409,13 +461,30 @@ namespace PlaqueAttack
                     // Draw food if set
                     if (currentFood != null)
                     {
+                        Texture2D greyBack = DrawUtils.CreateFilledRectangle(_graphics.GraphicsDevice, 200, 200, Color.LightGray, Color.LightGray);
                         Texture2D banana = Assets.Get<Texture2D>("Banana");
                         Texture2D salad = Assets.Get<Texture2D>("Salad");
+                        Texture2D hamburger = Assets.Get<Texture2D>("Hamburger");
+                        Texture2D pizza = Assets.Get<Texture2D>("Pizza");
+                        Texture2D icecream = Assets.Get<Texture2D>("Ice Cream");
+                        _spriteBatch.Draw(greyBack, new Vector2(4, 68), Color.White);
                         if (currentFood.foodType == Food.FoodTypes.Banana)
                             _spriteBatch.Draw(banana, new Vector2(4, 68), currentFood.clip, Color.White);
                         else if (currentFood.foodType == Food.FoodTypes.Salad)
                             _spriteBatch.Draw(salad, new Vector2(4, 68), currentFood.clip, Color.White);
+                        else if (currentFood.foodType == Food.FoodTypes.Hamburger)
+                            _spriteBatch.Draw(hamburger, new Vector2(4, 68), currentFood.clip, Color.White);
+                        else if (currentFood.foodType == Food.FoodTypes.Pizza)
+                            _spriteBatch.Draw(pizza, new Vector2(4, 68), currentFood.clip, Color.White);
+                        else if (currentFood.foodType == Food.FoodTypes.IceCream)
+                            _spriteBatch.Draw(icecream, new Vector2(4, 68), currentFood.clip, Color.White);
                         
+                    }
+
+                    if (playingState == PlayingState.GameOver)
+                    {
+                        Texture2D gameover = Assets.Get<Texture2D>("Lose");
+                        _spriteBatch.Draw(gameover, new Vector2(276, 176), Color.White);
                     }
                     _spriteBatch.End();
 
@@ -429,6 +498,18 @@ namespace PlaqueAttack
         {
             return Math.Sqrt((b.X - a.X) * (b.X - a.X) + (b.Y - a.Y) * (b.Y - a.Y));
         }
+
+        #region Hacky Sprite drawing
+        public int heartstate = 0;
+        //public Animation heartAnimation = new Animation(
+
+        public void drawHeart()
+        {
+
+        }
+
+        #endregion
+
 
         #region Game Methods
         public void playerBlockCollision(Player player, Board board)
@@ -458,6 +539,8 @@ namespace PlaqueAttack
                                 {
 
                                     bool cleared = board.ClearTile((int)b.getGridLoc().X, (int)b.getGridLoc().Y);
+                                    var destroy = Assets.Get<SoundEffect>("Destroy");
+                                    destroy.Play();
                                     //Console.WriteLine(cleared);
                                 }
 
@@ -474,6 +557,8 @@ namespace PlaqueAttack
                                 if (player.color1 == (b.GetColor()))
                                 {
                                     bool cleared = board.ClearTile((int)b.getGridLoc().X, (int)b.getGridLoc().Y);
+                                    var destroy = Assets.Get<SoundEffect>("Destroy");
+                                    destroy.Play();
                                 }
                             }
                             if (bar2.Intersects(r))
@@ -481,6 +566,8 @@ namespace PlaqueAttack
                                 if (player.color2 == (b.GetColor()))
                                 {
                                     bool cleared = board.ClearTile((int)b.getGridLoc().X, (int)b.getGridLoc().Y);
+                                    var destroy = Assets.Get<SoundEffect>("Destroy");
+                                    destroy.Play();
                                 }
 
                             }
