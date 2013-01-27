@@ -20,14 +20,34 @@ namespace PlaqueAttack
         public static readonly List<AssetModel> AssetList = new List<AssetModel>
         {
            new AssetModel(FirstLoad),
-            //new AssetModel("Background Music", "Music/Global Game Jam 1", typeof(Song)),
+           new AssetModel("Title", "Music/Title - Heartbeat", typeof(Song)),
+           new AssetModel("Swing", "Music/Stage 1 - Heartfelt Swing", typeof(Song)),
+           new AssetModel("Swing Fast", "Music/Stage 2 - Heartfelt Swing (Faster)", typeof(Song)),
+           new AssetModel("Chest", "Music/Stage 3 - Pounding in My Chest", typeof(Song)),
+           new AssetModel("Chest Fast", "Music/Stage 4 - Pounding in My Chest (Faster)", typeof(Song)),
+           new AssetModel("Disheartening", "Music/Stage 5 - Disheartening", typeof(Song)),
            // new AssetModel("Small font", "Fonts/Small", typeof(SpriteFont)),
            new AssetModel("Artery", "Images/arteryBackground", typeof(Texture2D)),
            new AssetModel("Banana", "Images/bananaFadeIn", typeof(Texture2D)),
            new AssetModel("Salad", "Images/saladFadeIn", typeof(Texture2D)),
-           new AssetModel("Block", "Images/square", typeof(Texture2D)),
+           new AssetModel("Hamburger", "Images/burgerFadeIn", typeof(Texture2D)),
+           new AssetModel("Pizza", "Images/pizzaFadeIn", typeof(Texture2D)),
+           new AssetModel("Ice Cream", "Images/icecreamFadeIn", typeof(Texture2D)),
+           new AssetModel("Block", "Images/squareCircle", typeof(Texture2D)),
+           new AssetModel("Heart Concerned", "Images/heart/heartpumpConcerned", typeof(Texture2D)),
+           new AssetModel("Heart Dead", "Images/heart/heartpumpDead", typeof(Texture2D)),
+           new AssetModel("Heart Hard", "Images/heart/heartpumpHard", typeof(Texture2D)),
+           new AssetModel("Heart Smile", "Images/heart/heartpumpSmile", typeof(Texture2D)),
+           new AssetModel("Start", "Images/title", typeof(Texture2D)),
+           new AssetModel("Lose", "Images/gameOver", typeof(Texture2D)),
 
-            //new AssetModel("Click", "Music/Click", typeof(SoundEffect)),
+           new AssetModel("Attach", "SFX/Brick Attach", typeof(SoundEffect)),
+           new AssetModel("Destroy", "SFX/Brick Destroy", typeof(SoundEffect)),
+           new AssetModel("Danger", "SFX/Danger Sound", typeof(SoundEffect)),
+           new AssetModel("Game Over", "SFX/Game Over", typeof(SoundEffect)),
+           new AssetModel("Victory", "SFX/Game Victory", typeof(SoundEffect)),
+           new AssetModel("Stage Complete", "SFX/Stage Victory", typeof(SoundEffect)),
+           new AssetModel("Warning", "SFX/Warning Sound", typeof(SoundEffect)),
         };
 
         /// <summary>
