@@ -8,7 +8,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\bananaFadeIn.xnb</Output>
-      <Time>2013-01-26T17:31:10.5233586-05:00</Time>
+      <Time>2013-01-27T11:43:01.0312071-05:00</Time>
     </Item>
     <Item>
       <Source>Images\saladFadeIn.png</Source>
@@ -17,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\saladFadeIn.xnb</Output>
-      <Time>2013-01-26T17:30:44.8728402-05:00</Time>
+      <Time>2013-01-27T11:43:03.993678-05:00</Time>
     </Item>
     <Item>
       <Source>Images\heart\heartpumpConcerned.png</Source>
@@ -107,7 +107,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\burgerFadeIn.xnb</Output>
-      <Time>2013-01-26T19:35:38.0500505-05:00</Time>
+      <Time>2013-01-27T11:43:02.4294448-05:00</Time>
     </Item>
     <Item>
       <Source>Images\icecreamFadeIn.png</Source>
@@ -116,7 +116,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\icecreamFadeIn.xnb</Output>
-      <Time>2013-01-26T19:35:38.0520508-05:00</Time>
+      <Time>2013-01-27T11:43:02.9920929-05:00</Time>
     </Item>
     <Item>
       <Source>Images\pizzaFadeIn.png</Source>
@@ -125,7 +125,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\pizzaFadeIn.xnb</Output>
-      <Time>2013-01-26T19:35:38.0550511-05:00</Time>
+      <Time>2013-01-27T11:43:03.489307-05:00</Time>
     </Item>
     <Item>
       <Source>Images\squareCircle.png</Source>
@@ -375,6 +375,24 @@
       <Options>None</Options>
       <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\squareExplode.xnb</Output>
       <Time>2013-01-26T22:18:03.7560521-05:00</Time>
+    </Item>
+    <Item>
+      <Source>SFX\Error.wav</Source>
+      <Name>SFX\Error</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\SFX\Error.xnb</Output>
+      <Time>2013-01-27T10:19:30.9209708-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Font.spritefont</Source>
+      <Name>Font</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Font.xnb</Output>
+      <Time>2013-01-27T11:47:49.4758804-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

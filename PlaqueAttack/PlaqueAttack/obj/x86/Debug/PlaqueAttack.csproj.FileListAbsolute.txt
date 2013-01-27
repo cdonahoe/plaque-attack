@@ -100,3 +100,9 @@ C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Con
 C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\playerIcon\2yellow.xnb
 C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\squareExplode.xnb
 C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\obj\x86\Debug\PlaqueAttack.csprojResolveAssemblyReference.cache
+C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\SFX\Error.xnb
+C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Font.xnb
+C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\PlaqueAttack.exe.manifest
+C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\PlaqueAttack.application
+C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\obj\x86\Debug\PlaqueAttack.exe.manifest
+C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\obj\x86\Debug\PlaqueAttack.application

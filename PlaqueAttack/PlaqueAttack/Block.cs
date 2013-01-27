@@ -37,8 +37,11 @@ namespace PlaqueAttack
             this.color = color;
             active = false;
             loc = location;
-            x = (int)gridLoc.X;
-            y = (int)gridLoc.Y;
+        }
+
+        public void SetColor(Block.BlockColor color)
+        {
+            this.color = color;
         }
 
         public void SetActive(bool active)

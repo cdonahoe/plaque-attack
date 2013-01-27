@@ -41,8 +41,15 @@ namespace PlaqueAttack
            new AssetModel("Start", "Images/title", typeof(Texture2D)),
            new AssetModel("Lose", "Images/gameOver", typeof(Texture2D)),
            new AssetModel("Win", "Images/victorySpritesheet", typeof(Texture2D)),
+           new AssetModel("P1", "Images/playerIcon/1yellow", typeof(Texture2D)),
+           new AssetModel("P2", "Images/playerIcon/2blue", typeof(Texture2D)),
+           new AssetModel("CautionG", "Images/caution/cautionsGreen", typeof(Texture2D)),
+           new AssetModel("CautionR", "Images/caution/cautionsRed", typeof(Texture2D)),
+           new AssetModel("CautionO", "Images/caution/cautionsOrange", typeof(Texture2D)),
+           new AssetModel("CautionY", "Images/caution/cautionsYellow", typeof(Texture2D)),
 
            new AssetModel("Attach", "SFX/Brick Attach", typeof(SoundEffect)),
+           new AssetModel("Error", "SFX/Error", typeof(SoundEffect)),
            new AssetModel("Destroy", "SFX/Brick Destroy", typeof(SoundEffect)),
            new AssetModel("Danger", "SFX/Danger Sound", typeof(SoundEffect)),
            new AssetModel("Game Over", "SFX/Game Over", typeof(SoundEffect)),
@@ -163,6 +170,7 @@ namespace PlaqueAttack
         /// </summary>
         private static void FirstLoad()
         {
+            Data["Font"] = Game.GetGame().Content.Load<SpriteFont>("Font");
         }
 
         /*
