@@ -89,3 +89,14 @@ C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\C
 C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Stage 4 - Pounding in My Chest (Faster).wma
 C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Stage 5 - Disheartening.wma
 C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Title - Heartbeat.wma
+C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\victorySpritesheet.xnb
+C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\playerIcon\1blue.xnb
+C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\playerIcon\1purple.xnb
+C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\playerIcon\1red.xnb
+C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\playerIcon\1yellow.xnb
+C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\playerIcon\2blue.xnb
+C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\playerIcon\2purple.xnb
+C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\playerIcon\2red.xnb
+C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\playerIcon\2yellow.xnb
+C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\squareExplode.xnb
+C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\obj\x86\Debug\PlaqueAttack.csprojResolveAssemblyReference.cache

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using PlaqueAttack.Utilities;
 
 namespace PlaqueAttack
 {
@@ -13,12 +14,19 @@ namespace PlaqueAttack
         Random rand;
         int numBlocks;
         public bool gameLost = false;
+        public List<TransformAnimation> blockFallUpdate;
 
         public Board(int cols, int rows) 
         {
+            blockFallUpdate = new List<TransformAnimation>();
             blockArray = new Block[cols, rows];
             rand = new Random();
             numBlocks = 0;
+        }
+
+        public List<TransformAnimation> getAnimationArray()
+        {
+            return blockFallUpdate;
         }
 
         /// <summary>
@@ -61,9 +69,9 @@ namespace PlaqueAttack
             {
                 blockArray[c, r] = null;
                 numBlocks--;
+                //CheckForFall(c, r);
                 return true;
             }
-            Console.WriteLine("Point in grid: " + c + " " + r);
             return false;
         }
 
@@ -82,6 +90,7 @@ namespace PlaqueAttack
             if (blockArray[startC, startR] != null && blockArray[endC, endR] == null)
             {
                 AddBlock(blockArray[startC, startR], endC, endR);
+                blockArray[endC, endR].setGridLoc(endC, endR);
                 ClearTile(startC, startR);
                 return true;
             }
@@ -93,15 +102,17 @@ namespace PlaqueAttack
         /// Tile c, r can be empty.
         /// Returns false if there are no adjacent blocks.
         /// </summary>
-        /// <param name="r"></param>
         /// <param name="c"></param>
+        /// <param name="r"></param>
         /// <returns></returns>
-        public bool HasAdjacent(int r, int c)
+        public bool HasAdjacent(int c, int r)
         {
             if (r > 0 && blockArray[c, r - 1] != null) return true; // Up
             if (c > 0 && blockArray[c - 1, r] != null) return true; // Left
             if (r < blockArray.GetLength(1) - 1 && blockArray[c, r + 1] != null) return true; // Down
             if (c < blockArray.GetLength(0) - 1 && blockArray[c + 1, r] != null) return true; // Right
+            // If it's on the left or right edge, return true
+            if (c == 0 || c == blockArray.GetLength(1) - 1) return true;
             return false;
         }
 
@@ -174,5 +185,35 @@ namespace PlaqueAttack
             numBlocks = 0;
         }
 
+        /// <summary>
+        /// Checks to see if potential blocks need to fall
+        /// </summary>
+        public void CheckForFall(int p, int o)
+        {
+            for (int c = 0; c < blockArray.GetLength(0); c++)
+            {
+                for (int r = 0; r < blockArray.GetLength(1); r++)
+                {
+                    if (blockArray[c, r] != null && !HasAdjacent(c, r))
+                    {
+                        MakeFall(c, r);
+                    }
+                }
+            }
+        }
+
+        public void MakeFall(int c, int r)
+        {
+            // Double check that this block can fall down
+            if (c < blockArray.GetLength(0) - 1 && r < blockArray.GetLength(1) - 1 && blockArray[c, r] != null && blockArray[c, r + 1] == null)
+            {
+                Block b = blockArray[c, r];
+                // Animate the block to that space
+                TransformAnimation t = new TransformAnimation(b, TimeSpan.FromSeconds(0.1), b.GetLoc(), new Vector2(b.GetLoc().X, b.GetLoc().Y + 40), TransformAnimation.AnimationCurve.Lerp);
+                blockFallUpdate.Add(t);
+                // Move the block in the grid
+                MoveBlock(c, r, c, r + 1);
+            }
+        }
     }
 }

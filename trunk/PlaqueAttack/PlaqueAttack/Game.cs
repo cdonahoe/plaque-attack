@@ -126,6 +126,7 @@ namespace PlaqueAttack
         /// and initialize them as well.
         /// </summary>
         ///
+
         protected override void Initialize()
         {
             _graphics.PreferredBackBufferWidth = WINDOW_WIDTH;
@@ -214,11 +215,18 @@ namespace PlaqueAttack
 
                 case GameState.Playing:
                     // Switch for playing states
+
+                    // Update heart
+                    UpdateHeart(gameTime);
+                    // Update title
+                    UpdateTitle(gameTime);
+
                     switch (playingState)
                     {
                         case PlayingState.Title:
                             if (MediaPlayer.State != MediaState.Playing)
                             {
+                                heartstate = 0;
                                 MediaPlayer.IsRepeating = true;
                                 MediaPlayer.Volume = 1f;
                                 MediaPlayer.Play(Assets.Get<Song>("Title"));
@@ -250,9 +258,11 @@ namespace PlaqueAttack
                                         MediaPlayer.Play(Assets.Get<Song>("Swing Fast"));
                                         break;
                                     case Food.FoodTypes.Hamburger:
+                                        heartstate = 1;
                                         MediaPlayer.Play(Assets.Get<Song>("Chest"));
                                         break;
                                     case Food.FoodTypes.Pizza:
+                                        heartstate = 2;
                                         MediaPlayer.Play(Assets.Get<Song>("Chest Fast"));
                                         break;
                                     case Food.FoodTypes.IceCream:
@@ -293,7 +303,12 @@ namespace PlaqueAttack
 
                                             if (foodLevels.Count == 0)
                                             {
-                                                // No more foods... YOU WIN!
+                                                // No more foods in queue... YOU WIN!
+                                                currentFood = null;
+                                                MediaPlayer.Stop();
+                                                heartstate = 0;
+                                                var victory = Assets.Get<SoundEffect>("Victory");
+                                                victory.Play();
                                                 playingState = PlayingState.Victory;
                                                 break;
                                             }
@@ -308,6 +323,7 @@ namespace PlaqueAttack
                             if (keyboardState.GetPressedKeys().Length > 0)
                             {
                                 board.ClearBoard();
+                                board.gameLost = false;
                                 foodLevels = new Queue<Food>();
                                 foodLevels.Enqueue(new Food(Food.FoodTypes.Banana));
                                 foodLevels.Enqueue(new Food(Food.FoodTypes.Salad));
@@ -316,13 +332,23 @@ namespace PlaqueAttack
                                 foodLevels.Enqueue(new Food(Food.FoodTypes.IceCream));
                                 playingState = PlayingState.Title;
                             }
-                            Console.WriteLine("GameOver state");
                             break;
                         case PlayingState.Victory:
+                            UpdateVictory(gameTime);
                             break;
                     }
 
                     // Update any transform animations; delete them if they're done
+                    for (int i = 0; i < board.getAnimationArray().Count; i++)
+                    {
+                        bool done = board.blockFallUpdate[i].Update(gameTime);
+                        if (done)
+                        {
+                            Block b = ((Block)board.blockFallUpdate[i].GetObject());
+                            board.MakeFall((int)b.getGridLoc().X, (int)b.getGridLoc().Y);
+                            board.blockFallUpdate.Remove(board.blockFallUpdate[i]);
+                        }
+                    }
                     for (int i = 0; i < animationUpdateArray.Count; i++)
                     {
                         bool done = animationUpdateArray[i].Update(gameTime);
@@ -332,12 +358,15 @@ namespace PlaqueAttack
                             if (animationUpdateArray[i].GetObject() is Block)
                             {
                                 ((Block)animationUpdateArray[i].GetObject()).SetActive(true);
+                                var attach = Assets.Get<SoundEffect>("Destroy");
+                                attach.Play();
                                 
                                 // GAME OVER!!!
                                 if (board.gameLost)
                                 {
                                     currentFood = null;
                                     MediaPlayer.Stop();
+                                    heartstate = 3;
                                     var gameover = Assets.Get<SoundEffect>("Game Over");
                                     gameover.Play();
                                     playingState = PlayingState.GameOver;
@@ -390,9 +419,13 @@ namespace PlaqueAttack
 
 
                     _spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+                    // Draw heart
+                    DrawHeart();
                     // Draw background
                     Texture2D artery = Assets.Get<Texture2D>("Artery");
                     _spriteBatch.Draw(artery, new Vector2(236, 0), Color.White);
+
+                    
 
                     
 
@@ -494,9 +527,6 @@ namespace PlaqueAttack
                     }
 
 
-
-                    // Draw 
-
                     // Draw food if set
                     if (currentFood != null)
                     {
@@ -520,11 +550,21 @@ namespace PlaqueAttack
                         
                     }
 
+
+                    if (playingState == PlayingState.Title)
+                    {
+                        DrawTitle();
+                    }
                     if (playingState == PlayingState.GameOver)
                     {
                         Texture2D gameover = Assets.Get<Texture2D>("Lose");
                         _spriteBatch.Draw(gameover, new Vector2(276, 176), Color.White);
                     }
+                    // Draw victory
+                    if (playingState == PlayingState.Victory)
+                        DrawVictory();
+
+
                     _spriteBatch.End();
 
                     break;
@@ -539,13 +579,66 @@ namespace PlaqueAttack
         }
 
         #region Hacky Sprite drawing
-        public int heartstate = 0;
-        //public Animation heartAnimation = new Animation(
-
-        public void drawHeart()
+        private int heartstate = 0;
+        private Animation heartAnimation = new Animation(2, 1, 300, 240, 2, 1, 0, 0);
+        private Rectangle? heartClip;
+        public void UpdateHeart(GameTime gameTime)
         {
-
+            heartAnimation.Update(gameTime);
+            heartClip = heartAnimation.CurrentFrame;
         }
+        public void DrawHeart()
+        {
+            switch (heartstate)
+            {
+                case 0:
+                    Texture2D heart = Assets.Get<Texture2D>("Heart Smile");
+                    _spriteBatch.Draw(heart, new Vector2(0, 420), heartClip, Color.White);
+                    break;
+                case 1:
+                    Texture2D heartc = Assets.Get<Texture2D>("Heart Concerned");
+                    _spriteBatch.Draw(heartc, new Vector2(0, 420), heartClip, Color.White);
+                    break;
+                case 2:
+                    Texture2D hearth = Assets.Get<Texture2D>("Heart Hard");
+                    _spriteBatch.Draw(hearth, new Vector2(0, 420), heartClip, Color.White);
+                    break;
+                case 3:
+                    Texture2D heartd = Assets.Get<Texture2D>("Heart Dead");
+                    _spriteBatch.Draw(heartd, new Vector2(0, 420), Color.White);
+                    break;
+            }
+            
+        }
+
+        private Animation titleAnimation = new Animation(2, 1, 476, 580, 2, 1, 0, 0);
+        private Rectangle? titleClip;
+        public void UpdateTitle(GameTime gameTime)
+        {
+            titleAnimation.Update(gameTime);
+            titleClip = titleAnimation.CurrentFrame;
+        }
+        public void DrawTitle()
+        {
+           
+            Texture2D title = Assets.Get<Texture2D>("Start");
+            _spriteBatch.Draw(title, new Vector2(262, 44), titleClip, Color.White);
+        }
+
+        // Victory animation
+        private Animation victoryAnimation = new Animation(5, 2, 682, 624, 3, 2, 0, 0);
+        private Rectangle? victoryClip;
+        public void UpdateVictory(GameTime gameTime)
+        {
+            victoryAnimation.Update(gameTime);
+            victoryClip = victoryAnimation.CurrentFrame;
+        }
+        public void DrawVictory()
+        {
+            Texture2D victory = Assets.Get<Texture2D>("Win");
+            _spriteBatch.Draw(victory, new Vector2(110, 23), victoryClip, Color.White);
+        }
+
 
         #endregion
 
@@ -579,7 +672,7 @@ namespace PlaqueAttack
                                 {
 
                                     bool cleared = board.ClearTile((int)b.getGridLoc().X, (int)b.getGridLoc().Y);
-                                    var destroy = Assets.Get<SoundEffect>("Destroy");
+                                    var destroy = Assets.Get<SoundEffect>("Attach");
                                     destroy.Play();
                                     //Console.WriteLine(cleared);
                                 }
@@ -597,7 +690,7 @@ namespace PlaqueAttack
                                 if (player.color1 == (b.GetColor()))
                                 {
                                     bool cleared = board.ClearTile((int)b.getGridLoc().X, (int)b.getGridLoc().Y);
-                                    var destroy = Assets.Get<SoundEffect>("Destroy");
+                                    var destroy = Assets.Get<SoundEffect>("Attach");
                                     destroy.Play();
                                 }
                             }
@@ -606,7 +699,7 @@ namespace PlaqueAttack
                                 if (player.color2 == (b.GetColor()))
                                 {
                                     bool cleared = board.ClearTile((int)b.getGridLoc().X, (int)b.getGridLoc().Y);
-                                    var destroy = Assets.Get<SoundEffect>("Destroy");
+                                    var destroy = Assets.Get<SoundEffect>("Attach");
                                     destroy.Play();
                                 }
 
@@ -640,6 +733,8 @@ namespace PlaqueAttack
                             {
 
                                 bool cleared = board.ClearTile((int)b.getGridLoc().X, (int)b.getGridLoc().Y);
+                                var destroy = Assets.Get<SoundEffect>("Attach");
+                                destroy.Play();
                                 //Console.WriteLine(cleared);
                             }
 
