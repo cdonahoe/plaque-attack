@@ -68,57 +68,6 @@ namespace PlaqueAttack
             return color;
         }
 
-       /* public Color GetVisualColor()
-        {
-            switch();
-                case this.color == BlockColor.Yellow:
-                    {
-                        return new Color(255, 255, 0);
-                        break;
-                    }
-                case Block.BlockColor.Blue:
-                    {
-                        color = new Color(0, 255, 255);
-                        break;
-                    }
-                case Block.BlockColor.Purple:
-                    {
-                        color = new Color(128, 0, 128);
-                        break;
-                    }
-                case Block.BlockColor.Red:
-                    {
-                        color = new Color(255, 0, 0);
-                        break;
-                    }
-                case Block.BlockColor.Brown:
-                    {
-                        color = new Color(180, 85, 0);
-                        break;
-                    }
-                case Block.BlockColor.Green:
-                    {
-                        color = new Color(12, 255, 0);
-                        break;
-                    }
-                case Block.BlockColor.Magenta:
-                    {
-                        color = new Color(255, 0, 255);
-                        break;
-                    }
-                case Block.BlockColor.Orange:
-                    {
-                        color = new Color(255, 180, 0);
-                        break;
-                    }
-            }
-
-            return Color.Transparent;
-        }
-        * */
-   
- 
-
         public Vector2 getGridLoc()
         {
             return gridLoc;
