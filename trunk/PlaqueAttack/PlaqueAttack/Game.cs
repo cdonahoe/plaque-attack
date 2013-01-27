@@ -146,8 +146,8 @@ namespace PlaqueAttack
             animationUpdateArray = new List<TransformAnimation>();
 
             //player1 = new Player(1, Block.BlockColor.Yellow, Block.BlockColor.Blue);
-            player1 = new Player(1, Block.BlockColor.Yellow);
-            player2 = new Player(2, Block.BlockColor.Blue);
+            player1 = new Player(1, Block.BlockColor.Yellow, Block.BlockColor.Purple);
+            player2 = new Player(2, Block.BlockColor.Blue, Block.BlockColor.Red);
 
             foodLevels = new Queue<Food>();
             foodLevels.Enqueue(new Food(Food.FoodTypes.Banana));
@@ -282,13 +282,22 @@ namespace PlaqueAttack
                                     {
                                         //if (board.GetNumBlocks() == 0)
                                         {
+                                            
+
+                                            if (currentFood.foodType == Food.FoodTypes.Salad)
+                                            {
+                                                player1.setBarNumber(2);
+                                                player2.setBarNumber(2);
+                                            }
                                             currentFood = null;
+
                                             if (foodLevels.Count == 0)
                                             {
                                                 // No more foods... YOU WIN!
                                                 playingState = PlayingState.Victory;
                                                 break;
                                             }
+
                                             playingState = PlayingState.Transition;
                                         }
                                     }
@@ -340,9 +349,15 @@ namespace PlaqueAttack
                     }
                     player1.Update();
                     player2.Update();
-                    playerBlockCollision(player1, board);
-                    playerBlockCollision(player2, board);
-                    twoPlayerBlockCollision(player1, player2, board);
+                    if (player1.position == player2.position)
+                    {
+                        twoPlayerBlockCollision(player1, player2, board);
+                    }
+                    else
+                    {
+                        playerBlockCollision(player1, board);
+                        playerBlockCollision(player2, board);
+                    }
                     break;
             }
 
@@ -443,30 +458,42 @@ namespace PlaqueAttack
                     //players
                     Texture2D barTexture = DrawUtils.CreateFilledRectangle(_graphics.GraphicsDevice, 480, 40, Color.White, Color.White);
                     Texture2D playerTexture = DrawUtils.CreateFilledRectangle(_graphics.GraphicsDevice, 40, 40, Color.White, Color.White);
+                    
                     Vector2 barPosition = new Vector2(player1.position.X + 40, player1.position.Y);
                     Vector2 endPosition = new Vector2(player1.position.X + 520, player1.position.Y);
-                    Vector2 startPosition = new Vector2(player1.position.X, player1.position.Y + 40);
-                    Vector2 barPosition2 = new Vector2(player1.position.X + 40, player1.position.Y + 40);
-                    Vector2 endPosition2 = new Vector2(player1.position.X + 520, player1.position.Y + 40);
                     Vector2 p2barPosition = new Vector2(player2.position.X + 40, player2.position.Y);
                     Vector2 p2endPosition = new Vector2(player2.position.X + 520, player2.position.Y);
-                    //if (player1.barNumber == 1)
-                    //{
-                        _spriteBatch.Draw(playerTexture, player1.position, Color.Yellow);
-                        _spriteBatch.Draw(playerTexture, endPosition, Color.Yellow);
-                        _spriteBatch.Draw(barTexture, barPosition, new Color(1, 1, 0, .05f));
-                    //}
+
+                    _spriteBatch.Draw(playerTexture, player1.position, GetVisualColor(player1.color1));
+                    _spriteBatch.Draw(playerTexture, endPosition, GetVisualColor(player1.color1));
+                    _spriteBatch.Draw(barTexture, barPosition, GetVisualColor(player1.color1) * 0.5f);
+
+                    _spriteBatch.Draw(playerTexture, player2.position, GetVisualColor(player2.color1));
+                    _spriteBatch.Draw(playerTexture, p2endPosition, GetVisualColor(player2.color1));
+                    _spriteBatch.Draw(barTexture, p2barPosition, GetVisualColor(player2.color1) * 0.5f);
+
                     if (player1.barNumber == 2)
                     {
-                        _spriteBatch.Draw(playerTexture, startPosition, Color.Blue);
-                        _spriteBatch.Draw(playerTexture, endPosition2, Color.Blue);
-                        _spriteBatch.Draw(barTexture, barPosition2, new Color(0,0,1,.05f));
+                        Vector2 startPosition = new Vector2(player1.position.X, player1.position.Y + 40);
+                        Vector2 barPosition2 = new Vector2(player1.position.X + 40, player1.position.Y + 40);
+                        Vector2 endPosition2 = new Vector2(player1.position.X + 520, player1.position.Y + 40);
+                        _spriteBatch.Draw(playerTexture, startPosition, GetVisualColor(player1.color2));
+                        _spriteBatch.Draw(playerTexture, endPosition2, GetVisualColor(player1.color2));
+                        _spriteBatch.Draw(barTexture, barPosition2, GetVisualColor(player1.color2) * 0.5f);
 
                     }
 
-                    _spriteBatch.Draw(playerTexture, player2.position, Color.Blue);
-                    _spriteBatch.Draw(playerTexture, p2endPosition, Color.Blue);
-                    _spriteBatch.Draw(barTexture, p2barPosition, new Color(0, 0, 1, .05f));
+                    if (player2.barNumber == 2)
+                    {
+                        Vector2 p2startPosition = new Vector2(player2.position.X, player2.position.Y + 40);
+                        Vector2 p2barPosition2 = new Vector2(player2.position.X + 40, player2.position.Y + 40);
+                        Vector2 p2endPosition2 = new Vector2(player2.position.X + 520, player2.position.Y + 40);
+                        _spriteBatch.Draw(playerTexture, p2startPosition, GetVisualColor(player2.color2));
+                        _spriteBatch.Draw(playerTexture, p2endPosition2, GetVisualColor(player2.color2));
+                        _spriteBatch.Draw(barTexture, p2barPosition2, GetVisualColor(player2.color2) * 0.5f);
+                    }
+
+
 
                     // Draw 
 
@@ -599,7 +626,7 @@ namespace PlaqueAttack
             Rectangle p1bar = new Rectangle((int)player1.GetPosition().X + 40, (int)player1.GetPosition().Y, 480, 40);
             Rectangle p2bar = new Rectangle((int)player2.GetPosition().X + 40, (int)player2.GetPosition().Y, 480, 40);
 
-            if (p1bar.Intersects(p2bar) && player1.kill == true && player2.kill == true)
+            if (p1bar.Intersects(p2bar) && (player1.kill == true || player2.kill == true))
             {
                 foreach (Block b in blocks)
                 {
@@ -652,6 +679,42 @@ namespace PlaqueAttack
             else return Block.BlockColor.Black;
 
         }
+
+
+        public Color GetVisualColor(Block.BlockColor b)
+        {
+            if (b.Equals(Block.BlockColor.Yellow))
+            {
+                return new Color(255, 255, 0);
+            }
+            else if (b.Equals(Block.BlockColor.Blue))
+            {
+                return new Color(0, 255, 255);
+            }
+            else if (b.Equals(Block.BlockColor.Purple))
+            {
+                return new Color(128, 0, 128);
+            }
+            else if (b.Equals(Block.BlockColor.Red))
+            {
+                return new Color(255, 0, 0);
+            }
+            else if (b.Equals(Block.BlockColor.Green))
+            {
+                return new Color(12, 255, 0);
+            }
+            else if (b.Equals(Block.BlockColor.Magenta))
+            {
+                return new Color(255, 0, 255);
+            }
+            else if (b.Equals(Block.BlockColor.Orange))
+            {
+                return new Color(255, 180, 0);
+            }
+            else return new Color(180, 85, 0);
+        }
+
+
         #endregion
 
         #region Drawing Methods

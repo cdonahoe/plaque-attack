@@ -30,6 +30,7 @@ namespace PlaqueAttack
         
 
         #region Constructor Region
+        /*
         public Player(int id, Block.BlockColor color)
         {
             //this.texture = texture;
@@ -40,22 +41,24 @@ namespace PlaqueAttack
             //this.bar1 = new Rectangle(startX + texture.Width, (int)position.Y, gridWidth, texture.Height);
             this.barNumber = 1;
 
-        }
+        }*/
 
         public Player(int id, Block.BlockColor color1, Block.BlockColor color2)
         {
-            //this.texture = texture;
             this.id = id;
             this.color1 = color1;
             this.color2 = color2;
             this.position.X = startX;
             this.position.Y = startY * (2 * id);
-            //this.bar1 = new Rectangle(startX + texture.Width, startY, gridWidth, (texture.Height/2));
-            //this.bar2 = new Rectangle(startX + texture.Width, startY + (texture.Height/2), gridWidth, (texture.Height / 2));
-            this.barNumber = 2;
+            this.barNumber = 1;
         }
 
         #endregion
+
+        public void setBarNumber(int num)
+        {
+            barNumber = num;
+        }
 
         public void Update()
         {
@@ -118,5 +121,7 @@ namespace PlaqueAttack
                 position.Y = playArea.Height - 40;
         }
 
+
+        
     }
 }
