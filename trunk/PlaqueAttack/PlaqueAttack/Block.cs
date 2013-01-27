@@ -40,8 +40,7 @@ namespace PlaqueAttack
             this.color = color;
             active = false;
             loc = location;
-            x = (int)gridLoc.X;
-            y = (int)gridLoc.Y;
+            
             //bounds = new Rectangle((int)loc.X, (int)loc.Y, width, height);
         }
 
