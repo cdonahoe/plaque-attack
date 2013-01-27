@@ -54,38 +54,38 @@ namespace PlaqueAttack
             foodType = type;
             if (type == FoodTypes.Banana)
             {
-                startBlocks = 30;
-                numBlocks = 30;
+                startBlocks = 80;
+                numBlocks = startBlocks;
                 numColors = 2;
                 speed = 40;
             }
             if (type == FoodTypes.Salad)
             {
-                startBlocks = 50;
-                numBlocks = 50;
-                numColors = 3;
+                startBlocks = 100;
+                numBlocks = startBlocks;
+                numColors = 2;
                 speed = 30;
             }
             if (type == FoodTypes.Hamburger)
             {
-                startBlocks = 30;
-                numBlocks = 30;
-                numColors = 4;
-                speed = 20;
+                startBlocks = 120;
+                numBlocks = startBlocks;
+                numColors = 3;
+                speed = 30;
             }
             if (type == FoodTypes.Pizza)
             {
-                startBlocks = 30;
-                numBlocks = 30;
-                numColors = 6;
-                speed = 20;
+                startBlocks = 150;
+                numBlocks = startBlocks;
+                numColors = 3;
+                speed = 30;
             }
             if (type == FoodTypes.IceCream)
             {
-                startBlocks = 30;
-                numBlocks = 30;
-                numColors = 8;
-                speed = 15;
+                startBlocks = 200;
+                numBlocks = startBlocks;
+                numColors = 3;
+                speed = 25;
             }
         }
 

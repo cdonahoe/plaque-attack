@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaqueAttack", "PlaqueAttack\PlaqueAttack\PlaqueAttack.csproj", "{014A9296-C369-43B5-8F50-C945147F94B0}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "PlaqueAttackContent", "PlaqueAttack\PlaqueAttackContent\PlaqueAttackContent.contentproj", "{97DD833A-9CCA-4A07-9524-8D4B1D6E985B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaqueAttackContent", "PlaqueAttack\PlaqueAttackContent\PlaqueAttackContent.contentproj", "{97DD833A-9CCA-4A07-9524-8D4B1D6E985B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
