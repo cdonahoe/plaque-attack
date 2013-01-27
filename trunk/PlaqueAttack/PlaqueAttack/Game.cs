@@ -684,6 +684,7 @@ namespace PlaqueAttack
                             Rectangle r = new Rectangle((int)b.GetLoc().X, (int)b.GetLoc().Y, 40, 40);
                             Rectangle bar1 = new Rectangle((int)player.GetPosition().X + 40, (int)player.GetPosition().Y, 480, 40);
                             Rectangle bar2 = new Rectangle((int)player.GetPosition().X + 40, (int)player.GetPosition().Y + 40, 480, 40);
+
                             if (bar1.Intersects(r))
                             {
                                 //checks if bar and block colors match
@@ -716,20 +717,22 @@ namespace PlaqueAttack
         {
             Block[,] blocks = board.GetBoard();
 
-            Rectangle p1bar = new Rectangle((int)player1.GetPosition().X + 40, (int)player1.GetPosition().Y, 480, 40);
-            Rectangle p2bar = new Rectangle((int)player2.GetPosition().X + 40, (int)player2.GetPosition().Y, 480, 40);
+            Rectangle p1bar1 = new Rectangle((int)player1.GetPosition().X + 40, (int)player1.GetPosition().Y, 480, 40);
+            Rectangle p1bar2 = new Rectangle((int)player1.GetPosition().X + 40, (int)player1.GetPosition().Y + 40, 480, 40);
+            Rectangle p2bar1 = new Rectangle((int)player2.GetPosition().X + 40, (int)player2.GetPosition().Y, 480, 40);
+            Rectangle p2bar2 = new Rectangle((int)player2.GetPosition().X + 40, (int)player2.GetPosition().Y + 40, 480, 40);
 
-            if (p1bar.Intersects(p2bar) && (player1.kill == true || player2.kill == true))
+            if (p1bar1.Intersects(p2bar1) && (player1.kill == true || player2.kill == true))
             {
                 foreach (Block b in blocks)
                 {
                     if (b != null)
                     {
                         Rectangle r = new Rectangle((int)b.GetLoc().X, (int)b.GetLoc().Y, 40, 40);
-                        if (p1bar.Intersects(r))
+                        if (p1bar1.Intersects(r))
                         {
                             //checks if bar and block colors match
-                            if (colorCombo(player1, player2) == (b.GetColor()))
+                            if (colorCombo(player1.color1, player2.color1) == (b.GetColor()))
                             {
 
                                 bool cleared = board.ClearTile((int)b.getGridLoc().X, (int)b.getGridLoc().Y);
@@ -743,30 +746,95 @@ namespace PlaqueAttack
                     }
                 }
             }
+            else if (p1bar1.Intersects(p2bar2) && (player1.kill == true || player2.kill == true))
+                {
+                    foreach (Block b in blocks)
+                    {
+                        if (b != null)
+                        {
+                            Rectangle r = new Rectangle((int)b.GetLoc().X, (int)b.GetLoc().Y, 40, 40);
+                            if (p1bar1.Intersects(r))
+                            {
+                                //checks if bar and block colors match
+                                if (colorCombo(player1.color1, player2.color2) == (b.GetColor()))
+                                {
+
+                                    bool cleared = board.ClearTile((int)b.getGridLoc().X, (int)b.getGridLoc().Y);
+                                    //Console.WriteLine(cleared);
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+            else if (p1bar2.Intersects(p2bar2) && (player1.kill == true || player2.kill == true))
+            {
+                foreach (Block b in blocks)
+                {
+                    if (b != null)
+                    {
+                        Rectangle r = new Rectangle((int)b.GetLoc().X, (int)b.GetLoc().Y, 40, 40);
+                        if (p1bar2.Intersects(r))
+                        {
+                            //checks if bar and block colors match
+                            if (colorCombo(player1.color2, player2.color2) == (b.GetColor()))
+                            {
+
+                                bool cleared = board.ClearTile((int)b.getGridLoc().X, (int)b.getGridLoc().Y);
+                                //Console.WriteLine(cleared);
+                            }
+
+                        }
+
+                    }
+                }
+            }
+            else if (p1bar2.Intersects(p2bar1) && (player1.kill == true || player2.kill == true))
+            {
+                foreach (Block b in blocks)
+                {
+                    if (b != null)
+                    {
+                        Rectangle r = new Rectangle((int)b.GetLoc().X, (int)b.GetLoc().Y, 40, 40);
+                        if (p1bar2.Intersects(r))
+                        {
+                            //checks if bar and block colors match
+                            if (colorCombo(player1.color2, player2.color1) == (b.GetColor()))
+                            {
+
+                                bool cleared = board.ClearTile((int)b.getGridLoc().X, (int)b.getGridLoc().Y);
+                                //Console.WriteLine(cleared);
+                            }
+
+                        }
+
+                    }
+                }
+            }
         }
 
 
-        private Block.BlockColor colorCombo(Player p1, Player p2)
+        private Block.BlockColor colorCombo(Block.BlockColor color1, Block.BlockColor color2)
         {
-            if ((p1.color1 == Block.BlockColor.Yellow && p2.color1 == Block.BlockColor.Red) ||
-                (p2.color1 == Block.BlockColor.Red && p1.color1 == Block.BlockColor.Yellow))
+            if ((color1 == Block.BlockColor.Yellow && color2 == Block.BlockColor.Red) ||
+                (color1 == Block.BlockColor.Red && color2 == Block.BlockColor.Yellow))
             {
                 return Block.BlockColor.Orange;
-            }
-
-            else if ((p1.color1 == Block.BlockColor.Yellow && p2.color1 == Block.BlockColor.Blue) ||
-                (p2.color1 == Block.BlockColor.Blue && p1.color1 == Block.BlockColor.Yellow))
+            } 
+            else if ((color1 == Block.BlockColor.Yellow && color2 == Block.BlockColor.Blue) ||
+                (color1 == Block.BlockColor.Blue && color2 == Block.BlockColor.Yellow))
             {
                 return Block.BlockColor.Green;
             }
-            else if ((p1.color1 == Block.BlockColor.Purple && p2.color1 == Block.BlockColor.Red) ||
-                (p2.color1 == Block.BlockColor.Red && p1.color1 == Block.BlockColor.Purple))
+            else if ((color1 == Block.BlockColor.Purple && color2 == Block.BlockColor.Red) ||
+                (color1 == Block.BlockColor.Red && color2 == Block.BlockColor.Purple))
             {
                 return Block.BlockColor.Magenta;
             }
 
-            else if ((p1.color1 == Block.BlockColor.Purple && p2.color1 == Block.BlockColor.Blue) ||
-                (p2.color1 == Block.BlockColor.Blue && p1.color1 == Block.BlockColor.Purple))
+            else if ((color1 == Block.BlockColor.Purple && color2 == Block.BlockColor.Blue) ||
+                (color1 == Block.BlockColor.Blue && color2 == Block.BlockColor.Purple))
             {
                 return Block.BlockColor.Brown;
             }

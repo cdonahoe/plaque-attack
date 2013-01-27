@@ -13,10 +13,6 @@ namespace PlaqueAttack
         private Vector2 gridLoc; // Location in the grid (r, c)
         private Vector2 loc; // Location on the screen (x, y)
         //public Rectangle bounds;
-        static int width = 40;
-        static int height = 40;
-        public int x;
-        public int y;
 
         public enum BlockColor
         {
@@ -43,7 +39,6 @@ namespace PlaqueAttack
             loc = location;
             x = (int)gridLoc.X;
             y = (int)gridLoc.Y;
-            //bounds = new Rectangle((int)loc.X, (int)loc.Y, width, height);
         }
 
         public void SetActive(bool active)
