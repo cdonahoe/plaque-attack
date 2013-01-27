@@ -63,6 +63,7 @@ namespace PlaqueAttack
                 numBlocks--;
                 return true;
             }
+            Console.WriteLine("Point in grid: " + c + " " + r);
             return false;
         }
 
@@ -74,6 +75,8 @@ namespace PlaqueAttack
         /// <param name="startR"></param>
         /// <param name="endC"></param>
         /// <param name="endR"></param>
+        /// 
+        
         public bool MoveBlock(int startC, int startR, int endC, int endR)
         {
             if (blockArray[startC, startR] != null && blockArray[endC, endR] == null)
@@ -153,6 +156,7 @@ namespace PlaqueAttack
                 GameLost();
             }
             numBlocks++;
+            block.setGridLoc(col, row);
             return new Vector2(col, row);
         }
 

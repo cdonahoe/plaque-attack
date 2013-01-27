@@ -125,7 +125,6 @@ namespace PlaqueAttack
         /// and initialize them as well.
         /// </summary>
         ///
-        private Texture2D playerTexture;
         protected override void Initialize()
         {
             _graphics.PreferredBackBufferWidth = WINDOW_WIDTH;
@@ -143,8 +142,7 @@ namespace PlaqueAttack
             board = new Board(12, 14);
             animationUpdateArray = new List<TransformAnimation>();
 
-            playerTexture = DrawUtils.CreateFilledRectangle(_graphics.GraphicsDevice, 40, 40, Color.Yellow, Color.Yellow);
-            player1 = new Player(playerTexture, 1, Color.Yellow);
+            player1 = new Player(1, Block.BlockColor.Yellow);
 
             //currentFood = new Food(Food.FoodTypes.Banana);
             foodLevels = new Queue<Food>();
@@ -229,7 +227,7 @@ namespace PlaqueAttack
                             Rectangle temp = currentFood.anim.CurrentFrame;
                             float percent = (float) currentFood.numBlocks / (float) currentFood.startBlocks;
                             temp.Width = (int) (currentFood.anim.CurrentFrame.Width * percent);
-                            Console.WriteLine(currentFood.numBlocks / currentFood.startBlocks);
+                            //Console.WriteLine(currentFood.numBlocks / currentFood.startBlocks);
                             currentFood.clip = temp;
 
                             spawnTimer++;
@@ -288,16 +286,7 @@ namespace PlaqueAttack
                         }
                     }
                     player1.Update();
-                    Block[,] blockArray = board.GetBoard();
-                    playerBlockCollision(player1, board.GetBoard());
-                    /*
-                    foreach (Block b in blockArray){
-                        if (b != null)
-                        {
-                            playerBlockCollision(player1, b);
-                        }
-                    }
-                     * */
+                    playerBlockCollision(player1, board);
                     break;
             }
 
@@ -394,9 +383,14 @@ namespace PlaqueAttack
                     }
                     
                     //players
-                     Texture2D barTexture = DrawUtils.CreateFilledRectangle(_graphics.GraphicsDevice, 480, 40, Color.Yellow, Color.Yellow);
+                    Texture2D barTexture = DrawUtils.CreateFilledRectangle(_graphics.GraphicsDevice, 480, 40, Color.Yellow, Color.Yellow);
+                    Texture2D playerTexture = DrawUtils.CreateFilledRectangle(_graphics.GraphicsDevice, 40, 40, Color.Yellow, Color.Yellow);
+                    Vector2 barPosition = new Vector2(player1.position.X + 40, player1.position.Y);
+                    Vector2 endPosition = new Vector2(player1.position.X + 520, player1.position.Y);
+
                     _spriteBatch.Draw(playerTexture, player1.position, Color.White);
-                    _spriteBatch.Draw(barTexture, player1.position, Color.White);
+                    _spriteBatch.Draw(playerTexture, endPosition, Color.White);
+                    _spriteBatch.Draw(barTexture, barPosition, Color.White);
 
                     // Draw 
 
@@ -425,64 +419,64 @@ namespace PlaqueAttack
         }
 
         #region Game Methods
-        public void playerBlockCollision(Player player, Block[,] blocks)
+        public void playerBlockCollision(Player player, Board board)
         {
+            Block[,] blocks = board.GetBoard();
 
-            if(player.kill == true)
+            if (player.kill == true)
             {
                 foreach (Block b in blocks)
                 {
                     if (b != null)
                     {
-                        Console.WriteLine("checked space");
+                        //Console.WriteLine("checked space");
                         if (player.barNumber == 1)
                         {
-                            Console.WriteLine("checked player");
-                           //checks if player bar intersects block
-                            Rectangle r = new Rectangle((int)b.GetLoc().X, (int)b.GetLoc().Y, 40, 40);
-                            Rectangle bar = new Rectangle((int)player.GetPosition().X + 20, (int)player.GetPosition().Y, 480, 40);
 
-                            Console.WriteLine("Player:" + (int)player.GetPosition().X + " , " + (int)player.GetPosition().Y + " , " + 480 + " , " + 40);
-                            Console.WriteLine("block:" + b.GetLoc().X + " , " + (int)b.GetLoc().Y + " , " + 40 + " , " + 40); 
-                            
+                            //checks if player bar intersects block
+                            Rectangle r = new Rectangle((int)b.GetLoc().X, (int)b.GetLoc().Y, 40, 40);
+                            Rectangle bar = new Rectangle((int)player.GetPosition().X + 40, (int)player.GetPosition().Y, 480, 40);
+
                             if (bar.Intersects(r))
                             {
-                                Console.WriteLine("checked collision");
+                                //Console.WriteLine("collision");
+
                                 //checks if bar and block colors match
-                                if (player.color1.Equals(b.GetColor()))
+                                if (player.color1 == (b.GetColor()))
                                 {
-                                    blocks[b.x, b.y] = null;
-                                    Console.WriteLine("Checked color, Collision should happen");
+
+                                    bool cleared = board.ClearTile((int)b.getGridLoc().X, (int)b.getGridLoc().Y);
+                                    //Console.WriteLine(cleared);
                                 }
 
                             }
                         }
-                        /*
                         if (player.barNumber == 2)
                         {
-                            if (player.bar1.Intersects(b.bounds))
+                            Rectangle r = new Rectangle((int)b.GetLoc().X, (int)b.GetLoc().Y, 40, 40);
+                            Rectangle bar1 = new Rectangle((int)player.GetPosition().X + 40, (int)player.GetPosition().Y, 480, 40);
+                            Rectangle bar2 = new Rectangle((int)player.GetPosition().X + 40, (int)player.GetPosition().Y + 40, 480, 40);
+                            if (bar1.Intersects(r))
                             {
                                 //checks if bar and block colors match
-                                if (player.color1.Equals(b.GetColor()))
+                                if (player.color1 == (b.GetColor()))
                                 {
-                                    blocks[b.x, b.y] = null;
+                                    bool cleared = board.ClearTile((int)b.getGridLoc().X, (int)b.getGridLoc().Y);
                                 }
                             }
-                            if (player.bar2.Intersects(b.bounds))
+                            if (bar2.Intersects(r))
                             {
-                                if (player.color2.Equals(b.GetColor()))
+                                if (player.color2 == (b.GetColor()))
                                 {
-                                    blocks[b.x, b.y] = null;
+                                    bool cleared = board.ClearTile((int)b.getGridLoc().X, (int)b.getGridLoc().Y);
                                 }
-                            }
-                        
-                        }
-                    */
-                    }
-                }
 
-            }
-           
+                            }
+                        }
+                    }
+
+                }
+            } 
 
         }
 
