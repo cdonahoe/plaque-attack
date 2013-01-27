@@ -20,14 +20,14 @@ namespace PlaqueAttack
 
         public enum BlockColor
         {
-            Yellow = 0,
-            Blue = 1,
-            Purple = 2,
-            Red = 3,
-            Brown = 4,
-            Green = 5,
-            Magenta = 6,
-            Orange = 7,
+            Yellow,
+            Blue,
+            Green,
+            Purple,
+            Red,
+            Brown,
+            Magenta,
+            Orange,
             Black = 8,
         }
 
@@ -41,7 +41,8 @@ namespace PlaqueAttack
             this.color = color;
             active = false;
             loc = location;
-            
+            x = (int)gridLoc.X;
+            y = (int)gridLoc.Y;
             //bounds = new Rectangle((int)loc.X, (int)loc.Y, width, height);
         }
 

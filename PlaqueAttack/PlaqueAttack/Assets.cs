@@ -40,6 +40,7 @@ namespace PlaqueAttack
            new AssetModel("Heart Smile", "Images/heart/heartpumpSmile", typeof(Texture2D)),
            new AssetModel("Start", "Images/title", typeof(Texture2D)),
            new AssetModel("Lose", "Images/gameOver", typeof(Texture2D)),
+           new AssetModel("Win", "Images/victorySpritesheet", typeof(Texture2D)),
 
            new AssetModel("Attach", "SFX/Brick Attach", typeof(SoundEffect)),
            new AssetModel("Destroy", "SFX/Brick Destroy", typeof(SoundEffect)),

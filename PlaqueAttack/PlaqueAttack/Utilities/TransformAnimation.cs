@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace PlaqueAttack.Utilities
 {
-    class TransformAnimation
+    public class TransformAnimation
     {
         // For translation animations
         private Vector2 currentPosition;
