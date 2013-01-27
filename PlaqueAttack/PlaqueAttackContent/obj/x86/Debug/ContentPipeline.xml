@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\arteryBackground.xnb</Output>
-      <Time>2013-01-26T17:15:46.8085625-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\arteryBackground.xnb</Output>
+      <Time>2013-01-26T18:35:06.1700872-05:00</Time>
     </Item>
     <Item>
       <Source>Images\bananaFadeIn.png</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\bananaFadeIn.xnb</Output>
-      <Time>2013-01-26T17:31:10.5233586-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\bananaFadeIn.xnb</Output>
+      <Time>2013-01-26T18:35:06.1760875-05:00</Time>
     </Item>
     <Item>
       <Source>Images\saladFadeIn.png</Source>
@@ -25,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\saladFadeIn.xnb</Output>
-      <Time>2013-01-26T17:30:44.8728402-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\saladFadeIn.xnb</Output>
+      <Time>2013-01-26T18:35:06.1820879-05:00</Time>
     </Item>
     <Item>
       <Source>Images\heart\heartpumpConcerned.png</Source>
@@ -34,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\heart\heartpumpConcerned.xnb</Output>
-      <Time>2013-01-26T18:35:58.5979555-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\heart\heartpumpConcerned.xnb</Output>
+      <Time>2013-01-26T20:46:58.4446434-05:00</Time>
     </Item>
     <Item>
       <Source>Images\heart\heartpumpDead.png</Source>
@@ -43,8 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\heart\heartpumpDead.xnb</Output>
-      <Time>2013-01-26T18:35:58.6009553-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\heart\heartpumpDead.xnb</Output>
+      <Time>2013-01-26T20:46:58.4346428-05:00</Time>
     </Item>
     <Item>
       <Source>Images\heart\heartpumpHard.png</Source>
@@ -52,8 +52,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\heart\heartpumpHard.xnb</Output>
-      <Time>2013-01-26T18:35:58.6383058-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\heart\heartpumpHard.xnb</Output>
+      <Time>2013-01-26T20:46:58.4396431-05:00</Time>
     </Item>
     <Item>
       <Source>Images\heart\heartpumpSmile.png</Source>
@@ -61,8 +61,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\heart\heartpumpSmile.xnb</Output>
-      <Time>2013-01-26T18:35:58.6403066-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\heart\heartpumpSmile.xnb</Output>
+      <Time>2013-01-26T20:46:58.4296426-05:00</Time>
     </Item>
     <Item>
       <Source>Images\caution\cautionsBlack.png</Source>
@@ -70,8 +70,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\caution\cautionsBlack.xnb</Output>
-      <Time>2013-01-26T18:43:40.5328696-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\caution\cautionsBlack.xnb</Output>
+      <Time>2013-01-26T20:46:58.3536382-05:00</Time>
     </Item>
     <Item>
       <Source>Images\caution\cautionsGreen.png</Source>
@@ -79,8 +79,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\caution\cautionsGreen.xnb</Output>
-      <Time>2013-01-26T18:43:40.5348694-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\caution\cautionsGreen.xnb</Output>
+      <Time>2013-01-26T20:46:58.3586385-05:00</Time>
     </Item>
     <Item>
       <Source>Images\caution\cautionsOrange.png</Source>
@@ -88,8 +88,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\caution\cautionsOrange.xnb</Output>
-      <Time>2013-01-26T18:43:40.5268699-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\caution\cautionsOrange.xnb</Output>
+      <Time>2013-01-26T20:46:58.3476379-05:00</Time>
     </Item>
     <Item>
       <Source>Images\caution\cautionsRed.png</Source>
@@ -97,8 +97,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\caution\cautionsRed.xnb</Output>
-      <Time>2013-01-26T18:43:40.5288698-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\caution\cautionsRed.xnb</Output>
+      <Time>2013-01-26T20:46:58.3356372-05:00</Time>
     </Item>
     <Item>
       <Source>Images\caution\cautionsYellow.png</Source>
@@ -106,8 +106,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\caution\cautionsYellow.xnb</Output>
-      <Time>2013-01-26T18:43:40.5318706-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\caution\cautionsYellow.xnb</Output>
+      <Time>2013-01-26T20:46:58.3406375-05:00</Time>
     </Item>
     <Item>
       <Source>Images\burgerFadeIn.png</Source>
@@ -115,8 +115,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\burgerFadeIn.xnb</Output>
-      <Time>2013-01-26T19:35:38.0500505-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\burgerFadeIn.xnb</Output>
+      <Time>2013-01-26T20:46:58.3306369-05:00</Time>
     </Item>
     <Item>
       <Source>Images\icecreamFadeIn.png</Source>
@@ -124,8 +124,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\icecreamFadeIn.xnb</Output>
-      <Time>2013-01-26T19:35:38.0520508-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\icecreamFadeIn.xnb</Output>
+      <Time>2013-01-26T20:46:58.420642-05:00</Time>
     </Item>
     <Item>
       <Source>Images\pizzaFadeIn.png</Source>
@@ -133,8 +133,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\pizzaFadeIn.xnb</Output>
-      <Time>2013-01-26T19:35:38.0550511-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\pizzaFadeIn.xnb</Output>
+      <Time>2013-01-26T20:46:58.5106472-05:00</Time>
     </Item>
     <Item>
       <Source>Images\squareCircle.png</Source>
@@ -142,8 +142,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\squareCircle.xnb</Output>
-      <Time>2013-01-26T19:41:12.9093772-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\squareCircle.xnb</Output>
+      <Time>2013-01-26T20:46:58.5036468-05:00</Time>
     </Item>
     <Item>
       <Source>Images\gameOver.png</Source>
@@ -151,8 +151,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\gameOver.xnb</Output>
-      <Time>2013-01-26T20:25:26.4234659-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\gameOver.xnb</Output>
+      <Time>2013-01-26T20:46:58.5166475-05:00</Time>
     </Item>
     <Item>
       <Source>Images\title.png</Source>
@@ -160,8 +160,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\title.xnb</Output>
-      <Time>2013-01-26T19:43:10.2768259-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Images\title.xnb</Output>
+      <Time>2013-01-26T20:46:58.4966464-05:00</Time>
     </Item>
     <Item>
       <Source>Music\Stage 1 - Heartfelt Swing.mp3</Source>
@@ -169,9 +169,9 @@
       <Importer>Mp3Importer</Importer>
       <Processor>SongProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Stage 1 - Heartfelt Swing.xnb</Output>
-      <Extra>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Stage 1 - Heartfelt Swing.wma</Extra>
-      <Time>2013-01-26T18:49:54.7937589-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Stage 1 - Heartfelt Swing.xnb</Output>
+      <Extra>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Stage 1 - Heartfelt Swing.wma</Extra>
+      <Time>2013-01-26T20:46:52.7973204-05:00</Time>
     </Item>
     <Item>
       <Source>Music\Stage 2 - Heartfelt Swing (Faster).mp3</Source>
@@ -179,9 +179,9 @@
       <Importer>Mp3Importer</Importer>
       <Processor>SongProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Stage 2 - Heartfelt Swing (Faster).xnb</Output>
-      <Extra>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Stage 2 - Heartfelt Swing (Faster).wma</Extra>
-      <Time>2013-01-26T18:49:54.8247627-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Stage 2 - Heartfelt Swing (Faster).xnb</Output>
+      <Extra>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Stage 2 - Heartfelt Swing (Faster).wma</Extra>
+      <Time>2013-01-26T20:46:52.8523235-05:00</Time>
     </Item>
     <Item>
       <Source>Music\Stage 3 - Pounding in My Chest.mp3</Source>
@@ -189,9 +189,9 @@
       <Importer>Mp3Importer</Importer>
       <Processor>SongProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Stage 3 - Pounding in My Chest.xnb</Output>
-      <Extra>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Stage 3 - Pounding in My Chest.wma</Extra>
-      <Time>2013-01-26T18:49:54.8689617-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Stage 3 - Pounding in My Chest.xnb</Output>
+      <Extra>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Stage 3 - Pounding in My Chest.wma</Extra>
+      <Time>2013-01-26T20:46:52.8333225-05:00</Time>
     </Item>
     <Item>
       <Source>Music\Stage 4 - Pounding in My Chest (Faster).mp3</Source>
@@ -199,9 +199,9 @@
       <Importer>Mp3Importer</Importer>
       <Processor>SongProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Stage 4 - Pounding in My Chest (Faster).xnb</Output>
-      <Extra>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Stage 4 - Pounding in My Chest (Faster).wma</Extra>
-      <Time>2013-01-26T18:49:54.9075368-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Stage 4 - Pounding in My Chest (Faster).xnb</Output>
+      <Extra>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Stage 4 - Pounding in My Chest (Faster).wma</Extra>
+      <Time>2013-01-26T20:46:52.7843197-05:00</Time>
     </Item>
     <Item>
       <Source>Music\Stage 5 - Disheartening.mp3</Source>
@@ -209,9 +209,9 @@
       <Importer>Mp3Importer</Importer>
       <Processor>SongProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Stage 5 - Disheartening.xnb</Output>
-      <Extra>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Stage 5 - Disheartening.wma</Extra>
-      <Time>2013-01-26T18:49:54.9338846-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Stage 5 - Disheartening.xnb</Output>
+      <Extra>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Stage 5 - Disheartening.wma</Extra>
+      <Time>2013-01-26T20:46:52.807321-05:00</Time>
     </Item>
     <Item>
       <Source>Music\Title - Heartbeat.mp3</Source>
@@ -219,9 +219,9 @@
       <Importer>Mp3Importer</Importer>
       <Processor>SongProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Title - Heartbeat.xnb</Output>
-      <Extra>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Title - Heartbeat.wma</Extra>
-      <Time>2013-01-26T18:49:54.9398847-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Title - Heartbeat.xnb</Output>
+      <Extra>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\Music\Title - Heartbeat.wma</Extra>
+      <Time>2013-01-26T20:46:52.842323-05:00</Time>
     </Item>
     <Item>
       <Source>SFX\Brick Attach.wav</Source>
@@ -229,8 +229,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\SFX\Brick Attach.xnb</Output>
-      <Time>2013-01-26T19:51:59.2992336-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\SFX\Brick Attach.xnb</Output>
+      <Time>2013-01-26T20:46:58.2036296-05:00</Time>
     </Item>
     <Item>
       <Source>SFX\Brick Destroy.wav</Source>
@@ -238,8 +238,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\SFX\Brick Destroy.xnb</Output>
-      <Time>2013-01-26T19:51:59.301234-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\SFX\Brick Destroy.xnb</Output>
+      <Time>2013-01-26T20:46:58.1496265-05:00</Time>
     </Item>
     <Item>
       <Source>SFX\Danger Sound.wav</Source>
@@ -247,8 +247,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\SFX\Danger Sound.xnb</Output>
-      <Time>2013-01-26T19:51:59.3052347-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\SFX\Danger Sound.xnb</Output>
+      <Time>2013-01-26T20:46:58.1686276-05:00</Time>
     </Item>
     <Item>
       <Source>SFX\Game Over.wav</Source>
@@ -256,8 +256,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\SFX\Game Over.xnb</Output>
-      <Time>2013-01-26T19:51:59.3102344-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\SFX\Game Over.xnb</Output>
+      <Time>2013-01-26T20:46:58.1586271-05:00</Time>
     </Item>
     <Item>
       <Source>SFX\Game Victory.wav</Source>
@@ -265,8 +265,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\SFX\Game Victory.xnb</Output>
-      <Time>2013-01-26T19:51:59.469741-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\SFX\Game Victory.xnb</Output>
+      <Time>2013-01-26T20:46:58.1846285-05:00</Time>
     </Item>
     <Item>
       <Source>SFX\Stage Victory.wav</Source>
@@ -274,8 +274,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\SFX\Stage Victory.xnb</Output>
-      <Time>2013-01-26T19:51:59.4767415-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\SFX\Stage Victory.xnb</Output>
+      <Time>2013-01-26T20:46:58.1426261-05:00</Time>
     </Item>
     <Item>
       <Source>SFX\Warning Sound.wav</Source>
@@ -283,8 +283,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\SFX\Warning Sound.xnb</Output>
-      <Time>2013-01-26T19:51:59.4817422-05:00</Time>
+      <Output>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\SFX\Warning Sound.xnb</Output>
+      <Time>2013-01-26T20:46:58.1906289-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -292,10 +292,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttackContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttackContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\George\Desktop\PlaqueAttack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttackContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttackContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\iSchool\Desktop\plaque attack\PlaqueAttack\PlaqueAttack\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -324,7 +324,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2013-01-25T21:17:01.614183-05:00</Value>
+        <Value>2013-01-25T21:32:37.9118504-05:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

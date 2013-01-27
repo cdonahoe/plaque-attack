@@ -109,6 +109,7 @@ namespace PlaqueAttack
         private PlayingState playingState;
         private Board board;
         private Player player1;
+        private Player player2;
         private List<TransformAnimation> animationUpdateArray;
         private Food currentFood;
         private Queue<Food> foodLevels;
@@ -144,7 +145,9 @@ namespace PlaqueAttack
             board = new Board(12, 14);
             animationUpdateArray = new List<TransformAnimation>();
 
-            player1 = new Player(1, Block.BlockColor.Yellow, Block.BlockColor.Blue);
+            //player1 = new Player(1, Block.BlockColor.Yellow, Block.BlockColor.Blue);
+            player1 = new Player(1, Block.BlockColor.Yellow);
+            player2 = new Player(2, Block.BlockColor.Blue);
 
             foodLevels = new Queue<Food>();
             foodLevels.Enqueue(new Food(Food.FoodTypes.Banana));
@@ -336,7 +339,10 @@ namespace PlaqueAttack
                         }
                     }
                     player1.Update();
+                    player2.Update();
                     playerBlockCollision(player1, board);
+                    playerBlockCollision(player2, board);
+                    twoPlayerBlockCollision(player1, player2, board);
                     break;
             }
 
@@ -442,11 +448,13 @@ namespace PlaqueAttack
                     Vector2 startPosition = new Vector2(player1.position.X, player1.position.Y + 40);
                     Vector2 barPosition2 = new Vector2(player1.position.X + 40, player1.position.Y + 40);
                     Vector2 endPosition2 = new Vector2(player1.position.X + 520, player1.position.Y + 40);
+                    Vector2 p2barPosition = new Vector2(player2.position.X + 40, player2.position.Y);
+                    Vector2 p2endPosition = new Vector2(player2.position.X + 520, player2.position.Y);
                     //if (player1.barNumber == 1)
                     //{
                         _spriteBatch.Draw(playerTexture, player1.position, Color.Yellow);
                         _spriteBatch.Draw(playerTexture, endPosition, Color.Yellow);
-                        _spriteBatch.Draw(barTexture, barPosition, Color.Transparent);
+                        _spriteBatch.Draw(barTexture, barPosition, new Color(1, 1, 0, .05f));
                     //}
                     if (player1.barNumber == 2)
                     {
@@ -455,6 +463,10 @@ namespace PlaqueAttack
                         _spriteBatch.Draw(barTexture, barPosition2, new Color(0,0,1,.05f));
 
                     }
+
+                    _spriteBatch.Draw(playerTexture, player2.position, Color.Blue);
+                    _spriteBatch.Draw(playerTexture, p2endPosition, Color.Blue);
+                    _spriteBatch.Draw(barTexture, p2barPosition, new Color(0, 0, 1, .05f));
 
                     // Draw 
 
@@ -512,6 +524,7 @@ namespace PlaqueAttack
 
 
         #region Game Methods
+
         public void playerBlockCollision(Player player, Board board)
         {
             Block[,] blocks = board.GetBoard();
@@ -579,6 +592,66 @@ namespace PlaqueAttack
 
         }
 
+        public void twoPlayerBlockCollision(Player player1, Player player2, Board board)
+        {
+            Block[,] blocks = board.GetBoard();
+
+            Rectangle p1bar = new Rectangle((int)player1.GetPosition().X + 40, (int)player1.GetPosition().Y, 480, 40);
+            Rectangle p2bar = new Rectangle((int)player2.GetPosition().X + 40, (int)player2.GetPosition().Y, 480, 40);
+
+            if (p1bar.Intersects(p2bar) && player1.kill == true && player2.kill == true)
+            {
+                foreach (Block b in blocks)
+                {
+                    if (b != null)
+                    {
+                        Rectangle r = new Rectangle((int)b.GetLoc().X, (int)b.GetLoc().Y, 40, 40);
+                        if (p1bar.Intersects(r))
+                        {
+                            //checks if bar and block colors match
+                            if (colorCombo(player1, player2) == (b.GetColor()))
+                            {
+
+                                bool cleared = board.ClearTile((int)b.getGridLoc().X, (int)b.getGridLoc().Y);
+                                //Console.WriteLine(cleared);
+                            }
+
+                        }
+
+                    }
+                }
+            }
+        }
+
+
+        private Block.BlockColor colorCombo(Player p1, Player p2)
+        {
+            if ((p1.color1 == Block.BlockColor.Yellow && p2.color1 == Block.BlockColor.Red) ||
+                (p2.color1 == Block.BlockColor.Red && p1.color1 == Block.BlockColor.Yellow))
+            {
+                return Block.BlockColor.Orange;
+            }
+
+            else if ((p1.color1 == Block.BlockColor.Yellow && p2.color1 == Block.BlockColor.Blue) ||
+                (p2.color1 == Block.BlockColor.Blue && p1.color1 == Block.BlockColor.Yellow))
+            {
+                return Block.BlockColor.Green;
+            }
+            else if ((p1.color1 == Block.BlockColor.Purple && p2.color1 == Block.BlockColor.Red) ||
+                (p2.color1 == Block.BlockColor.Red && p1.color1 == Block.BlockColor.Purple))
+            {
+                return Block.BlockColor.Magenta;
+            }
+
+            else if ((p1.color1 == Block.BlockColor.Purple && p2.color1 == Block.BlockColor.Blue) ||
+                (p2.color1 == Block.BlockColor.Blue && p1.color1 == Block.BlockColor.Purple))
+            {
+                return Block.BlockColor.Brown;
+            }
+
+            else return Block.BlockColor.Black;
+
+        }
         #endregion
 
         #region Drawing Methods
